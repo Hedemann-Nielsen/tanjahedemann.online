@@ -1,19 +1,21 @@
+import { useLanguage } from "../../i18n/LanguageContext";
+
 function Hero() {
+  const { translations } = useLanguage();
+  const { hero } = translations;
+
   return (
     <section className="section">
       <div className="container">
-        <p>UGC Creator & Content Specialist</p>
+        <p>{hero.eyebrow}</p>
 
         <h1>
-          Authentic content
+          {hero.titleStart}
           <br />
-          for modern brands.
+          {hero.titleEnd}
         </h1>
 
-        <p>
-          I create warm, relatable and visually engaging content that helps
-          brands connect with their audience.
-        </p>
+        <p>{hero.description}</p>
       </div>
     </section>
   );
