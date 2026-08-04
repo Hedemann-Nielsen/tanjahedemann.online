@@ -2,12 +2,17 @@ import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 
 function App() {
-	return (
-		<>
-			<Header />
-			<Hero />
-		</>
-	);
+  return (
+    <>
+      <div id="top" />
+
+      <Header />
+
+      <main>
+        <Hero />
+      </main>
+    </>
+  );
 }
 
 export default App;
