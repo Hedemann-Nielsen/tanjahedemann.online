@@ -1,18 +1,20 @@
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
+import Portfolio from "./components/Portfolio/Portfolio";
 
 function App() {
-  return (
-    <>
-      <div id="top" />
+	return (
+		<>
+			<div id="top" />
 
-      <Header />
+			<Header />
 
-      <main>
-        <Hero />
-      </main>
-    </>
-  );
+			<main>
+				<Hero />
+				<Portfolio />
+			</main>
+		</>
+	);
 }
 
 export default App;
