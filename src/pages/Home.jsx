@@ -3,6 +3,7 @@ import Hero from "../components/Hero/Hero";
 import Portfolio from "../components/Portfolio/Portfolio";
 import About from "../components/About/About";
 import Services from "../components/Services/Services";
+import Stats from "../components/Stats/Stats"
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
         <Portfolio />
         <About />
         <Services />
+        <Stats />
       </main>
     </>
   );
