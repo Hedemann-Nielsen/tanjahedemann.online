@@ -34,40 +34,43 @@ function Portfolio() {
 				</header>
 
 				<div className="portfolio__grid">
-					{portfolioItems.map((item) => {
-						const content = portfolio.items[item.translationKey];
+					{portfolioItems
+						.filter((item) => item.featured)
+						.slice(0, 4)
+						.map((item) => {
+							const content = portfolio.items[item.translationKey];
 
-						return (
-							<article className="portfolio-card" key={item.id}>
-								<button
-									className="portfolio-card__button"
-									type="button"
-									onClick={() => setSelectedItem(item)}
-									aria-label={`Play ${content.title}`}>
-									<div className="portfolio-card__media">
-										<img
-											className="portfolio-card__image"
-											src={item.poster}
-											alt=""
-										/>
+							return (
+								<article className="portfolio-card" key={item.id}>
+									<button
+										className="portfolio-card__button"
+										type="button"
+										onClick={() => setSelectedItem(item)}
+										aria-label={`Play ${content.title}`}>
+										<div className="portfolio-card__media">
+											<img
+												className="portfolio-card__image"
+												src={item.poster}
+												alt=""
+											/>
 
-										<span className="portfolio-card__play" aria-hidden="true">
-											▶
-										</span>
-									</div>
-
-									<div className="portfolio-card__content">
-										<div className="portfolio-card__meta">
-											<span>{content.brand}</span>
-											<span>{content.category}</span>
+											<span className="portfolio-card__play" aria-hidden="true">
+												▶
+											</span>
 										</div>
 
-										<h3 className="portfolio-card__title">{content.title}</h3>
-									</div>
-								</button>
-							</article>
-						);
-					})}
+										<div className="portfolio-card__content">
+											<div className="portfolio-card__meta">
+												<span>{content.brand}</span>
+												<span>{content.category}</span>
+											</div>
+
+											<h3 className="portfolio-card__title">{content.title}</h3>
+										</div>
+									</button>
+								</article>
+							);
+						})}
 				</div>
 			</div>
 

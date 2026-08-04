@@ -1,0 +1,214 @@
+@use "../styles/abstracts/variables" as *;
+
+.portfolio-page {
+  &__intro {
+    padding-block: 4rem 2.5rem;
+  }
+
+  &__eyebrow {
+    margin-bottom: 0.75rem;
+
+    color: $color-primary;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    max-width: 50rem;
+    margin-bottom: 1.5rem;
+
+    font-size: clamp(2.75rem, 13vw, 5.5rem);
+  }
+
+  &__description {
+    max-width: 40rem;
+  }
+
+  &__content {
+    padding-block: 1.5rem 5rem;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 0.5rem;
+
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
+
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__filter {
+    flex: 0 0 auto;
+
+    padding: 0.7rem 1rem;
+
+    background-color: transparent;
+    border: 1px solid $color-border;
+    border-radius: $radius-round;
+
+    color: $color-text-muted;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+
+    transition:
+      background-color $transition-default,
+      border-color $transition-default,
+      color $transition-default;
+
+    &--active {
+      background-color: $color-primary;
+      border-color: $color-primary;
+      color: $color-surface;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  &__empty {
+    padding-block: 3rem;
+    text-align: center;
+  }
+}
+
+.portfolio-page-card {
+  min-width: 0;
+
+  &__button {
+    width: 100%;
+    padding: 0;
+
+    background: transparent;
+    color: inherit;
+    text-align: left;
+  }
+
+  &__media {
+    position: relative;
+    overflow: hidden;
+
+    aspect-ratio: 1 / 1;
+
+    background-color: $color-surface-muted;
+    border-radius: $radius-large;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform $transition-default;
+  }
+
+  &__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: grid;
+    place-items: center;
+
+    width: 3.5rem;
+    height: 3.5rem;
+    padding-left: 0.2rem;
+
+    background-color: rgba($color-surface, 0.92);
+    border-radius: 50%;
+    box-shadow: $shadow-small;
+
+    color: $color-text;
+    font-size: 0.9rem;
+
+    transform: translate(-50%, -50%);
+    transition:
+      background-color $transition-default,
+      color $transition-default,
+      transform $transition-default;
+  }
+
+  &__content {
+    padding-top: 1rem;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+
+    margin-bottom: 0.4rem;
+
+    color: $color-text-muted;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    span + span::before {
+      content: "•";
+      margin-right: 0.75rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.35rem;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .portfolio-page {
+    &__intro {
+      padding-block: 6rem 3.5rem;
+    }
+
+    &__content {
+      padding-block: 2rem 7rem;
+    }
+
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .portfolio-page {
+    &__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    &__filter:hover {
+      border-color: $color-primary;
+      color: $color-primary-dark;
+    }
+
+    &__filter--active:hover {
+      color: $color-surface;
+    }
+  }
+
+  .portfolio-page-card {
+    &:hover &__image {
+      transform: scale(1.035);
+    }
+
+    &:hover &__play {
+      background-color: $color-primary;
+      color: $color-surface;
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+  }
+}

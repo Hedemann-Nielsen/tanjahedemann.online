@@ -46,6 +46,23 @@ export const translations = {
 				},
 			},
 		},
+
+		portfolioPage: {
+			eyebrow: "My portfolio",
+			title: "Selected content and collaborations",
+			description:
+				"Explore a selection of product demonstrations, tutorials and lifestyle content created for brands and social media.",
+
+			filters: {
+				all: "All",
+				product: "Product",
+				tutorial: "Tutorials",
+				lifestyle: "Lifestyle",
+			},
+
+			playVideo: "Play video",
+			empty: "No videos were found in this category.",
+		},
 	},
 
 	da: {
@@ -94,6 +111,23 @@ export const translations = {
 					title: "Produktindhold fra hverdagen",
 				},
 			},
+		},
+
+		portfolioPage: {
+			eyebrow: "Min portfolio",
+			title: "Udvalgt indhold og samarbejder",
+			description:
+				"Se et udvalg af produktdemonstrationer, tutorials og livsstilsindhold skabt til brands og sociale medier.",
+
+			filters: {
+				all: "Alle",
+				product: "Produkt",
+				tutorial: "Tutorials",
+				lifestyle: "Livsstil",
+			},
+
+			playVideo: "Afspil video",
+			empty: "Der blev ikke fundet videoer i denne kategori.",
 		},
 	},
 };
