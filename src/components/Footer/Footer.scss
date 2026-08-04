@@ -1,0 +1,83 @@
+@use "../../styles/abstracts/variables" as *;
+
+.footer {
+  padding-block: 3rem 1.5rem;
+
+  background-color: $color-surface;
+  border-top: 1px solid $color-border;
+
+  &__grid {
+    display: grid;
+    gap: 2.5rem;
+
+    padding-bottom: 2.5rem;
+  }
+
+  &__brand {
+    p {
+      font-size: 0.85rem;
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+
+    margin-bottom: 1rem;
+
+    font-family: $font-heading;
+    font-size: 1.5rem;
+  }
+
+  &__heading {
+    margin-bottom: 1rem;
+
+    font-family: $font-body;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__nav,
+  &__links {
+    display: grid;
+    gap: 0.65rem;
+
+    a {
+      width: fit-content;
+
+      color: $color-text-muted;
+      font-size: 0.9rem;
+
+      transition: color $transition-default;
+    }
+  }
+
+  &__bottom {
+    padding-top: 1.5rem;
+
+    border-top: 1px solid $color-border;
+
+    p {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .footer {
+    padding-block: 4rem 2rem;
+
+    &__grid {
+      grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(10rem, 0.6fr));
+      gap: 3rem;
+    }
+
+    &__nav,
+    &__links {
+      a:hover {
+        color: $color-primary-dark;
+      }
+    }
+  }
+}

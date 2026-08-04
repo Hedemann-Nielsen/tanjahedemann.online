@@ -44,9 +44,8 @@ function PortfolioPage() {
 
   return (
     <>
-      <Header />
 
-      <main className="portfolio-page">
+      <div className="portfolio-page">
         <section className="portfolio-page__intro">
           <div className="container">
             <p className="portfolio-page__eyebrow">
@@ -151,7 +150,7 @@ function PortfolioPage() {
             onClose={() => setSelectedItem(null)}
           />
         )}
-      </main>
+      </div>
     </>
   );
 }

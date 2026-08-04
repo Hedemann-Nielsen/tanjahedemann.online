@@ -157,6 +157,23 @@ export const translations = {
 				submit: "Send enquiry",
 			},
 		},
+
+        footer: {
+  tagline: "UGC Creator & Content Specialist",
+  location: "Based in Denmark",
+
+  navigationTitle: "Navigation",
+  connectTitle: "Connect",
+
+  navigation: {
+    work: "Work",
+    about: "About",
+    services: "Services",
+    contact: "Contact",
+  },
+
+  copyright: "All rights reserved.",
+},
 	},
 
 	da: {
@@ -317,5 +334,22 @@ export const translations = {
 				submit: "Send forespørgsel",
 			},
 		},
+
+        footer: {
+  tagline: "UGC-creator og indholdsspecialist",
+  location: "Bosat i Danmark",
+
+  navigationTitle: "Navigation",
+  connectTitle: "Kontakt",
+
+  navigation: {
+    work: "Portfolio",
+    about: "Om mig",
+    services: "Ydelser",
+    contact: "Kontakt",
+  },
+
+  copyright: "Alle rettigheder forbeholdes.",
+},
 	},
 };
