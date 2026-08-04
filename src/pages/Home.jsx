@@ -1,20 +1,24 @@
-import Header from "../components/Header/Header.jsx"
-import Hero from "../components/Hero/Hero.jsx";
-import Portfolio from "../components/Portfolio/Portfolio.jsx";
+import Header from "../components/Header/Header";
+import Hero from "../components/Hero/Hero";
+import Portfolio from "../components/Portfolio/Portfolio";
+import About from "../components/About/About";
+import Services from "../components/Services/Services";
 
-function App() {
-	return (
-		<>
-			<div id="top" />
+function Home() {
+  return (
+    <>
+      <div id="top" />
 
-			<Header />
+      <Header />
 
-			<main>
-				<Hero />
-				<Portfolio />
-			</main>
-		</>
-	);
+      <main>
+        <Hero />
+        <Portfolio />
+        <About />
+        <Services />
+      </main>
+    </>
+  );
 }
 
-export default App;
+export default Home;

@@ -63,6 +63,64 @@ export const translations = {
 			playVideo: "Play video",
 			empty: "No videos were found in this category.",
 		},
+
+		about: {
+			eyebrow: "About me",
+
+			title: "Creating authentic content that builds trust.",
+
+			description:
+				"I'm Tanja, a Danish content creator with several years of experience creating authentic content for brands. My background as both a knitwear designer and frontend web developer gives me a strong eye for aesthetics, storytelling and user experience.",
+
+			highlights: [
+				"Authentic UGC",
+				"Product demonstrations",
+				"Tutorial videos",
+				"Danish & English content",
+			],
+
+			trustedBy: "Trusted by",
+		},
+
+        services: {
+  eyebrow: "Services",
+  title: "Content tailored to your brand",
+  description:
+    "I create authentic, engaging content for social media, paid campaigns and brand channels.",
+
+  items: [
+    {
+      title: "Product demonstrations",
+      description:
+        "Clear and relatable videos that show how a product works and why it is useful.",
+    },
+    {
+      title: "Tutorials",
+      description:
+        "Educational content that explains techniques, features or processes in an easy-to-follow way.",
+    },
+    {
+      title: "Talking head videos",
+      description:
+        "Natural and trustworthy videos where I speak directly to the audience.",
+    },
+    {
+      title: "Voice-over content",
+      description:
+        "Visual storytelling combined with a clear and engaging voice-over.",
+    },
+    {
+      title: "Lifestyle content",
+      description:
+        "Authentic content that places products naturally in everyday situations.",
+    },
+    {
+      title: "Product photography",
+      description:
+        "Warm and aesthetic product images for websites, social media and campaigns.",
+    },
+  ],
+},
 	},
 
 	da: {
@@ -129,5 +187,63 @@ export const translations = {
 			playVideo: "Afspil video",
 			empty: "Der blev ikke fundet videoer i denne kategori.",
 		},
+
+		about: {
+			eyebrow: "Om mig",
+
+			title: "Jeg skaber autentisk indhold, der skaber tillid.",
+
+			description:
+				"Jeg er Tanja – en dansk content creator med flere års erfaring i at skabe autentisk indhold for brands. Min baggrund som både strikkedesigner og frontend-udvikler giver mig et skarpt øje for æstetik, historiefortælling og brugeroplevelser.",
+
+			highlights: [
+				"Autentisk UGC",
+				"Produktdemonstrationer",
+				"Tutorial-videoer",
+				"Dansk & engelsk indhold",
+			],
+
+			trustedBy: "Brands jeg har samarbejdet med",
+		},
+
+        services: {
+  eyebrow: "Ydelser",
+  title: "Indhold tilpasset dit brand",
+  description:
+    "Jeg skaber autentisk og engagerende indhold til sociale medier, annoncer og brandets egne kanaler.",
+
+  items: [
+    {
+      title: "Produktdemonstrationer",
+      description:
+        "Tydelige og troværdige videoer, der viser, hvordan et produkt fungerer, og hvorfor det er relevant.",
+    },
+    {
+      title: "Tutorials",
+      description:
+        "Lærerigt indhold, der forklarer teknikker, funktioner eller processer på en overskuelig måde.",
+    },
+    {
+      title: "Talking head-videoer",
+      description:
+        "Naturlige og troværdige videoer, hvor jeg taler direkte til målgruppen.",
+    },
+    {
+      title: "Voice-over-indhold",
+      description:
+        "Visuel historiefortælling kombineret med en tydelig og engagerende voice-over.",
+    },
+    {
+      title: "Livsstilsindhold",
+      description:
+        "Autentisk indhold, hvor produkter indgår naturligt i hverdagssituationer.",
+    },
+    {
+      title: "Produktfotografering",
+      description:
+        "Varme og æstetiske produktbilleder til websites, sociale medier og kampagner.",
+    },
+  ],
+},
 	},
 };
