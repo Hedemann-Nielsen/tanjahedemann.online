@@ -22,6 +22,7 @@ export const translations = {
 			title: "Content that connects",
 			description:
 				"A selection of product demonstrations, tutorials and lifestyle content created for brands.",
+			viewAll: "View all work",
 			items: {
 				knitproShowcase: {
 					brand: "KnitPro",
@@ -37,6 +38,11 @@ export const translations = {
 					brand: "Portfolio concept",
 					category: "Lifestyle",
 					title: "Authentic everyday content",
+				},
+				productDemo: {
+					brand: "Portfolio concept",
+					category: "Product demonstration",
+					title: "Everyday product content",
 				},
 			},
 		},
@@ -65,6 +71,7 @@ export const translations = {
 			title: "Indhold, der skaber forbindelse",
 			description:
 				"Et udvalg af produktdemonstrationer, tutorials og livsstilsindhold skabt til brands.",
+			viewAll: "Se hele portfolioen",
 			items: {
 				knitproShowcase: {
 					brand: "KnitPro",
@@ -80,6 +87,11 @@ export const translations = {
 					brand: "Portfolio-koncept",
 					category: "Livsstil",
 					title: "Autentisk hverdagsindhold",
+				},
+				productDemo: {
+					brand: "Portfolio-koncept",
+					category: "Produktdemonstration",
+					title: "Produktindhold fra hverdagen",
 				},
 			},
 		},

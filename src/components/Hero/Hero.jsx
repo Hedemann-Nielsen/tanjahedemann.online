@@ -34,7 +34,7 @@ function Hero() {
           <div className="hero__image-wrapper">
             <img
               className="hero__image"
-              src="/images/hero.jpg"
+              src="/images/portfolio/hero.jpg"
               alt=""
             />
           </div>

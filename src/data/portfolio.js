@@ -17,4 +17,10 @@ export const portfolioItems = [
     video: "/videos/portfolio/lifestyle.mp4",
     poster: "/images/portfolio/lifestyle.jpg",
   },
+  {
+    id: "product-demo",
+    translationKey: "productDemo",
+    video: "/videos/portfolio/product-demo.mp4",
+    poster: "/images/portfolio/product-demo.jpg",
+  },
 ];

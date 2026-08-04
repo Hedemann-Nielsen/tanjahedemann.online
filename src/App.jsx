@@ -1,19 +1,16 @@
-import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
-import Portfolio from "./components/Portfolio/Portfolio";
+import { HashRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Portfolio from "./pages/Portfolio";
 
 function App() {
 	return (
-		<>
-			<div id="top" />
-
-			<Header />
-
-			<main>
-				<Hero />
-				<Portfolio />
-			</main>
-		</>
+		<HashRouter>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/portfolio" element={<Portfolio />} />
+			</Routes>
+		</HashRouter>
 	);
 }
 
