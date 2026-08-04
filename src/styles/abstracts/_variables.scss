@@ -1,0 +1,38 @@
+// Colors
+$color-background: #f6f3ef;
+$color-surface: #ffffff;
+$color-surface-muted: #eee8e1;
+
+$color-text: #292724;
+$color-text-muted: #6f6a64;
+
+$color-primary: #9c7c65;
+$color-primary-dark: #755a48;
+$color-primary-light: #d8c8bb;
+
+$color-border: #ded6ce;
+
+// Typography
+$font-heading: "Playfair Display", Georgia, serif;
+$font-body: "Manrope", Arial, sans-serif;
+
+// Layout
+$container-width: 1200px;
+
+// Border radius
+$radius-small: 0.5rem;
+$radius-medium: 1rem;
+$radius-large: 1.5rem;
+$radius-round: 999px;
+
+// Shadows
+$shadow-small: 0 0.5rem 1.5rem rgba(41, 39, 36, 0.06);
+$shadow-medium: 0 1rem 3rem rgba(41, 39, 36, 0.1);
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-default: 250ms ease;
+
+// Breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;

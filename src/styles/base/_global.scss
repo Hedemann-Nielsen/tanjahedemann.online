@@ -1,0 +1,54 @@
+@use "../abstracts/variables" as *;
+
+body {
+	min-width: 320px;
+	min-height: 100vh;
+
+	background-color: $color-background;
+	color: $color-text;
+
+	font-family: $font-body;
+	font-size: 1rem;
+	line-height: 1.6;
+
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+	font-family: $font-heading;
+	font-weight: 500;
+	line-height: 1.15;
+}
+
+h1 {
+	font-size: clamp(2.75rem, 8vw, 6rem);
+}
+
+h2 {
+	font-size: clamp(2rem, 5vw, 4rem);
+}
+
+h3 {
+	font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+p {
+	color: $color-text-muted;
+}
+
+::selection {
+	background-color: $color-primary-light;
+	color: $color-text;
+}
+
+.container {
+	width: min(100% - 2rem, $container-width);
+	margin-inline: auto;
+}
+
+.section {
+	padding-block: clamp(4rem, 9vw, 8rem);
+}
