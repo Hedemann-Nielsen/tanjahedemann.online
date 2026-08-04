@@ -1,214 +1,235 @@
 @use "../styles/abstracts/variables" as *;
 
 .portfolio-page {
-  &__intro {
-    padding-block: 4rem 2.5rem;
-  }
+	background-color: $color-background;
 
-  &__eyebrow {
-    margin-bottom: 0.75rem;
+	&__intro {
+		padding-block: 4rem 2.5rem;
+	}
 
-    color: $color-primary;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
+	&__eyebrow {
+		margin-bottom: 0.75rem;
 
-  &__title {
-    max-width: 50rem;
-    margin-bottom: 1.5rem;
+		color: $color-primary;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
 
-    font-size: clamp(2.75rem, 13vw, 5.5rem);
-  }
+	&__title {
+		max-width: 52rem;
+		margin-bottom: 1.5rem;
 
-  &__description {
-    max-width: 40rem;
-  }
+		font-size: clamp(2.75rem, 13vw, 5.5rem);
+	}
 
-  &__content {
-    padding-block: 1.5rem 5rem;
-  }
+	&__description {
+		max-width: 42rem;
 
-  &__filters {
-    display: flex;
-    gap: 0.5rem;
+		font-size: 1rem;
+	}
 
-    margin-bottom: 2.5rem;
-    padding-bottom: 0.5rem;
+	&__content {
+		padding-block: 1rem 5rem;
+	}
 
-    overflow-x: auto;
-    scrollbar-width: none;
+	&__filters {
+		display: flex;
+		gap: 0.5rem;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
+		margin-bottom: 2.5rem;
+		padding-bottom: 0.5rem;
 
-  &__filter {
-    flex: 0 0 auto;
+		overflow-x: auto;
+		scrollbar-width: none;
 
-    padding: 0.7rem 1rem;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
 
-    background-color: transparent;
-    border: 1px solid $color-border;
-    border-radius: $radius-round;
+	&__filter {
+		flex: 0 0 auto;
 
-    color: $color-text-muted;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+		padding: 0.75rem 1rem;
 
-    transition:
-      background-color $transition-default,
-      border-color $transition-default,
-      color $transition-default;
+		background-color: $color-surface;
+		border: 1px solid $color-border;
+		border-radius: $radius-round;
 
-    &--active {
-      background-color: $color-primary;
-      border-color: $color-primary;
-      color: $color-surface;
-    }
-  }
+		color: $color-text-muted;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
 
-  &__grid {
-    display: grid;
-    gap: 2rem;
-  }
+		transition:
+			background-color $transition-default,
+			border-color $transition-default,
+			color $transition-default,
+			transform $transition-default;
 
-  &__empty {
-    padding-block: 3rem;
-    text-align: center;
-  }
+		&--active {
+			background-color: $color-primary;
+			border-color: $color-primary;
+			color: $color-surface;
+		}
+	}
+
+	&__grid {
+		display: grid;
+		gap: 2rem;
+	}
+
+	&__empty {
+		padding-block: 4rem;
+
+		text-align: center;
+	}
 }
 
 .portfolio-page-card {
-  min-width: 0;
+	min-width: 0;
 
-  &__button {
-    width: 100%;
-    padding: 0;
+	&__button {
+		display: block;
 
-    background: transparent;
-    color: inherit;
-    text-align: left;
-  }
+		width: 100%;
+		padding: 0;
 
-  &__media {
-    position: relative;
-    overflow: hidden;
+		background-color: transparent;
+		color: inherit;
+		text-align: left;
+	}
 
-    aspect-ratio: 1 / 1;
+	&__media {
+		position: relative;
+		overflow: hidden;
 
-    background-color: $color-surface-muted;
-    border-radius: $radius-large;
-  }
+		aspect-ratio: 1 / 1;
 
-  &__image {
-    width: 100%;
-    height: 100%;
+		background-color: $color-surface-muted;
+		border-radius: $radius-large;
+		box-shadow: $shadow-small;
+	}
 
-    object-fit: cover;
+	&__image {
+		width: 100%;
+		height: 100%;
 
-    transition: transform $transition-default;
-  }
+		object-fit: cover;
 
-  &__play {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+		transition: transform $transition-default;
+	}
 
-    display: grid;
-    place-items: center;
+	&__play {
+		position: absolute;
+		top: 50%;
+		left: 50%;
 
-    width: 3.5rem;
-    height: 3.5rem;
-    padding-left: 0.2rem;
+		display: grid;
+		place-items: center;
 
-    background-color: rgba($color-surface, 0.92);
-    border-radius: 50%;
-    box-shadow: $shadow-small;
+		width: 3.5rem;
+		height: 3.5rem;
+		padding-left: 0.2rem;
 
-    color: $color-text;
-    font-size: 0.9rem;
+		background-color: rgba($color-surface, 0.94);
+		border-radius: 50%;
+		box-shadow: $shadow-small;
 
-    transform: translate(-50%, -50%);
-    transition:
-      background-color $transition-default,
-      color $transition-default,
-      transform $transition-default;
-  }
+		color: $color-text;
+		font-size: 0.9rem;
 
-  &__content {
-    padding-top: 1rem;
-  }
+		transform: translate(-50%, -50%);
 
-  &__meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem 0.75rem;
+		transition:
+			background-color $transition-default,
+			color $transition-default,
+			transform $transition-default;
+	}
 
-    margin-bottom: 0.4rem;
+	&__content {
+		padding-top: 1rem;
+	}
 
-    color: $color-text-muted;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+	&__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem 0.75rem;
 
-    span + span::before {
-      content: "•";
-      margin-right: 0.75rem;
-    }
-  }
+		margin-bottom: 0.45rem;
 
-  &__title {
-    font-size: 1.35rem;
-  }
+		color: $color-text-muted;
+		font-size: 0.7rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+
+		span + span::before {
+			content: "•";
+			margin-right: 0.75rem;
+		}
+	}
+
+	&__title {
+		font-size: 1.35rem;
+		line-height: 1.2;
+	}
 }
 
 @media (min-width: $breakpoint-tablet) {
-  .portfolio-page {
-    &__intro {
-      padding-block: 6rem 3.5rem;
-    }
+	.portfolio-page {
+		&__intro {
+			padding-block: 6rem 3.5rem;
+		}
 
-    &__content {
-      padding-block: 2rem 7rem;
-    }
+		&__content {
+			padding-block: 1.5rem 7rem;
+		}
 
-    &__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
+		&__filters {
+			margin-bottom: 3rem;
+		}
+
+		&__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 2rem 1.5rem;
+		}
+	}
 }
 
 @media (min-width: $breakpoint-desktop) {
-  .portfolio-page {
-    &__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
-    }
+	.portfolio-page {
+		&__intro {
+			padding-block: 7rem 4rem;
+		}
 
-    &__filter:hover {
-      border-color: $color-primary;
-      color: $color-primary-dark;
-    }
+		&__grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 2.5rem 1.5rem;
+		}
 
-    &__filter--active:hover {
-      color: $color-surface;
-    }
-  }
+		&__filter:hover {
+			border-color: $color-primary;
+			color: $color-primary-dark;
+			transform: translateY(-0.1rem);
+		}
 
-  .portfolio-page-card {
-    &:hover &__image {
-      transform: scale(1.035);
-    }
+		&__filter--active:hover {
+			color: $color-surface;
+		}
+	}
 
-    &:hover &__play {
-      background-color: $color-primary;
-      color: $color-surface;
-      transform: translate(-50%, -50%) scale(1.08);
-    }
-  }
+	.portfolio-page-card {
+		&:hover &__image {
+			transform: scale(1.04);
+		}
+
+		&:hover &__play {
+			background-color: $color-primary;
+			color: $color-surface;
+			transform: translate(-50%, -50%) scale(1.08);
+		}
+	}
 }
