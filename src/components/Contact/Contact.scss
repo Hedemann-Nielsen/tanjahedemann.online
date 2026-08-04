@@ -1,0 +1,129 @@
+@use "../../styles/abstracts/variables" as *;
+
+.contact {
+  background-color: $color-text;
+  color: $color-surface;
+
+  &__inner {
+    display: grid;
+    gap: 3rem;
+  }
+
+  &__content {
+    max-width: 38rem;
+  }
+
+  &__eyebrow {
+    margin-bottom: 0.75rem;
+
+    color: $color-primary-light;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin-bottom: 1.25rem;
+
+    color: $color-surface;
+  }
+
+  &__description {
+    color: rgba($color-surface, 0.72);
+  }
+
+  &__form {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  &__field {
+    display: grid;
+    gap: 0.5rem;
+
+    label {
+      color: rgba($color-surface, 0.8);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.9rem 0;
+
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba($color-surface, 0.3);
+      border-radius: 0;
+      outline: none;
+
+      color: $color-surface;
+
+      transition: border-color $transition-default;
+
+      &:focus {
+        border-color: $color-primary-light;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  }
+
+  &__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    min-height: 3.25rem;
+    width: 100%;
+    padding-inline: 1.5rem;
+
+    background-color: $color-primary;
+    border-radius: $radius-small;
+
+    color: $color-surface;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    span {
+      transition: transform $transition-default;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .contact {
+    &__inner {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      align-items: start;
+      gap: 4rem;
+    }
+
+    &__form {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &__field--full,
+    &__submit {
+      grid-column: 1 / -1;
+    }
+
+    &__submit {
+      width: fit-content;
+      justify-self: start;
+    }
+
+    &__submit:hover span {
+      transform: translateX(0.3rem);
+    }
+  }
+}

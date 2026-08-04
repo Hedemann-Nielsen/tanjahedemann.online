@@ -4,6 +4,7 @@ import Portfolio from "../components/Portfolio/Portfolio";
 import About from "../components/About/About";
 import Services from "../components/Services/Services";
 import Stats from "../components/Stats/Stats"
+import Contact from "../components/Contact/Contact"
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
         <About />
         <Services />
         <Stats />
+        <Contact />
       </main>
     </>
   );

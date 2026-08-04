@@ -142,6 +142,21 @@ export const translations = {
 				},
 			],
 		},
+
+		contact: {
+			eyebrow: "Let's create together",
+			title: "Ready to elevate your brand?",
+			description:
+				"Tell me a little about your project, and I’ll get back to you as soon as possible.",
+
+			form: {
+				name: "Name",
+				email: "Email",
+				company: "Company",
+				message: "Tell me about your project",
+				submit: "Send enquiry",
+			},
+		},
 	},
 
 	da: {
@@ -286,6 +301,21 @@ export const translations = {
 					label: "Indholdssprog",
 				},
 			],
+		},
+
+		contact: {
+			eyebrow: "Lad os skabe noget sammen",
+			title: "Klar til at løfte dit brand?",
+			description:
+				"Fortæl mig lidt om dit projekt, så vender jeg tilbage hurtigst muligt.",
+
+			form: {
+				name: "Navn",
+				email: "E-mail",
+				company: "Virksomhed",
+				message: "Fortæl mig om dit projekt",
+				submit: "Send forespørgsel",
+			},
 		},
 	},
 };
