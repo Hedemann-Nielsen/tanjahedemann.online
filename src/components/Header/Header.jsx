@@ -1,75 +1,178 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { HashLink } from "react-router-hash-link";
 import { useLanguage } from "../../i18n/LanguageContext";
 import "./Header.scss";
 
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { language, toggleLanguage, translations } = useLanguage();
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isScrolled, setIsScrolled] = useState(false);
+	const [activeSection, setActiveSection] = useState("top");
 
-  const { navigation } = translations;
+	const { translations } = useLanguage();
+	const { navigation } = translations;
 
-  function closeMenu() {
-    setIsMenuOpen(false);
-  }
+	function closeMenu() {
+		setIsMenuOpen(false);
+	}
 
-  return (
-    <header className="header">
-      <div className="container header__inner">
-        <a className="header__logo" href="#top" onClick={closeMenu}>
-          Tanja Hedemann
-        </a>
+	useEffect(() => {
+		function handleEscape(event) {
+			if (event.key === "Escape") {
+				closeMenu();
+			}
+		}
 
-        <div className="header__actions">
-          <button
-            className="header__language"
-            type="button"
-            onClick={toggleLanguage}
-            aria-label={
-              language === "en"
-                ? "Skift sprog til dansk"
-                : "Switch language to English"
-            }
-          >
-            {language === "en" ? "DA" : "EN"}
-          </button>
+		window.addEventListener("keydown", handleEscape);
 
-          <button
-            className="header__menu-button"
-            type="button"
-            aria-expanded={isMenuOpen}
-            aria-controls="main-navigation"
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setIsMenuOpen((current) => !current)}
-          >
-            <span />
-            <span />
-          </button>
-        </div>
+		return () => {
+			window.removeEventListener("keydown", handleEscape);
+		};
+	}, []);
 
-        <nav
-          id="main-navigation"
-          className={`header__nav ${isMenuOpen ? "header__nav--open" : ""}`}
-          aria-label="Main navigation"
-        >
-          <a href="#work" onClick={closeMenu}>
-            {navigation.work}
-          </a>
+	useEffect(() => {
+		function handleScrollState() {
+			setIsScrolled(window.scrollY > 30);
+		}
 
-          <a href="#about" onClick={closeMenu}>
-            {navigation.about}
-          </a>
+		handleScrollState();
 
-          <a href="#services" onClick={closeMenu}>
-            {navigation.services}
-          </a>
+		window.addEventListener("scroll", handleScrollState, {
+			passive: true,
+		});
 
-          <a href="#contact" onClick={closeMenu}>
-            {navigation.contact}
-          </a>
-        </nav>
-      </div>
-    </header>
-  );
+		return () => {
+			window.removeEventListener("scroll", handleScrollState);
+		};
+	}, []);
+
+	useEffect(() => {
+		document.body.classList.toggle("menu-open", isMenuOpen);
+
+		return () => {
+			document.body.classList.remove("menu-open");
+		};
+	}, [isMenuOpen]);
+
+	useEffect(() => {
+		const sectionIds = ["work", "about", "services", "contact"];
+
+		function updateActiveSection() {
+			const headerOffset = 140;
+			const scrollPosition = window.scrollY + headerOffset;
+
+			let currentSection = "top";
+
+			sectionIds.forEach((sectionId) => {
+				const section = document.getElementById(sectionId);
+
+				if (section && section.offsetTop <= scrollPosition) {
+					currentSection = sectionId;
+				}
+			});
+
+			setActiveSection(currentSection);
+		}
+
+		updateActiveSection();
+
+		window.addEventListener("scroll", updateActiveSection, {
+			passive: true,
+		});
+
+		window.addEventListener("resize", updateActiveSection);
+
+		return () => {
+			window.removeEventListener("scroll", updateActiveSection);
+			window.removeEventListener("resize", updateActiveSection);
+		};
+	}, []);
+
+	return (
+		<header className={`header ${isScrolled ? "header--scrolled" : ""}`}>
+			<div className="container header__inner">
+				<HashLink
+					className="header__logo"
+					smooth
+					to="/#top"
+					onClick={closeMenu}
+				>
+					Tanja Hedemann
+				</HashLink>
+
+				<button
+					className="header__menu-button"
+					type="button"
+					aria-expanded={isMenuOpen}
+					aria-controls="main-navigation"
+					aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+					onClick={() => setIsMenuOpen((current) => !current)}
+				>
+					<span />
+					<span />
+				</button>
+
+				<nav
+					id="main-navigation"
+					className={`header__nav ${
+						isMenuOpen ? "header__nav--open" : ""
+					}`}
+					aria-label="Main navigation"
+				>
+					<HashLink
+						className={`header__link ${
+							activeSection === "work"
+								? "header__link--active"
+								: ""
+						}`}
+						smooth
+						to="/#work"
+						onClick={closeMenu}
+					>
+						{navigation.work}
+					</HashLink>
+
+					<HashLink
+						className={`header__link ${
+							activeSection === "about"
+								? "header__link--active"
+								: ""
+						}`}
+						smooth
+						to="/#about"
+						onClick={closeMenu}
+					>
+						{navigation.about}
+					</HashLink>
+
+					<HashLink
+						className={`header__link ${
+							activeSection === "services"
+								? "header__link--active"
+								: ""
+						}`}
+						smooth
+						to="/#services"
+						onClick={closeMenu}
+					>
+						{navigation.services}
+					</HashLink>
+
+					<HashLink
+						className={`header__link header__contact-link ${
+							activeSection === "contact"
+								? "header__link--active"
+								: ""
+						}`}
+						smooth
+						to="/#contact"
+						onClick={closeMenu}
+					>
+						{navigation.contact}
+					</HashLink>
+				</nav>
+			</div>
+		</header>
+	);
 }
 
 export default Header;

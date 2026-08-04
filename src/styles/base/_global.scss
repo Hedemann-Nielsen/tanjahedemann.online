@@ -52,3 +52,7 @@ p {
 .section {
 	padding-block: clamp(4rem, 9vw, 8rem);
 }
+
+body.menu-open {
+	overflow: hidden;
+}

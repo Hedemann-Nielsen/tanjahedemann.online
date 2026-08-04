@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import LanguageToggle from "../LanguageToggle/LanguageToggle"
 
 function Layout() {
   return (
@@ -13,6 +14,7 @@ function Layout() {
       </main>
 
       <Footer />
+      <LanguageToggle />
     </>
   );
 }

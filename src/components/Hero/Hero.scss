@@ -1,0 +1,188 @@
+@use "../../styles/abstracts/variables" as *;
+
+.hero {
+  padding-block: 3rem 5rem;
+
+  &__inner {
+    display: grid;
+    gap: 3rem;
+  }
+
+  &__content {
+    max-width: 42rem;
+  }
+
+  &__eyebrow {
+    margin-bottom: 1rem;
+
+    color: $color-primary;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+
+    font-size: clamp(3rem, 14vw, 5.5rem);
+
+    em {
+      font-weight: inherit;
+    }
+  }
+
+  &__description {
+    max-width: 34rem;
+    margin-bottom: 2rem;
+
+    font-size: 1rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 3.25rem;
+    padding-inline: 1.5rem;
+
+    border: 1px solid $color-primary;
+    border-radius: $radius-small;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    transition:
+      background-color $transition-default,
+      color $transition-default,
+      transform $transition-default;
+  }
+
+  &__button--primary {
+    background-color: $color-primary;
+    color: $color-surface;
+  }
+
+  &__button--secondary {
+    background-color: transparent;
+    color: $color-primary-dark;
+  }
+
+  &__visual {
+    position: relative;
+  }
+
+  &__image-wrapper {
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+
+    border-radius: $radius-large;
+    background-color: $color-surface-muted;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__stats {
+    display: grid;
+    gap: 0.75rem;
+
+    margin-top: -2rem;
+    padding-inline: 1rem;
+  }
+
+  &__stat {
+    padding: 1rem 1.25rem;
+
+    background-color: rgba($color-surface, 0.94);
+    border: 1px solid rgba($color-border, 0.8);
+    border-radius: $radius-medium;
+    box-shadow: $shadow-small;
+    backdrop-filter: blur(12px);
+
+    strong,
+    span {
+      display: block;
+    }
+
+    strong {
+      margin-bottom: 0.15rem;
+
+      font-family: $font-heading;
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    span {
+      color: $color-text-muted;
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .hero {
+    padding-block: 5rem 7rem;
+
+    &__inner {
+      grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr);
+      align-items: center;
+      gap: 4rem;
+    }
+
+    &__actions {
+      flex-direction: row;
+    }
+
+    &__button {
+      width: auto;
+    }
+
+    &__stats {
+      position: absolute;
+      top: 50%;
+      right: -1.5rem;
+
+      width: 11rem;
+      margin-top: 0;
+      padding: 0;
+
+      transform: translateY(-50%);
+    }
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .hero {
+    min-height: calc(100vh - 5rem);
+
+    &__inner {
+      min-height: inherit;
+    }
+
+    &__button:hover {
+      transform: translateY(-2px);
+    }
+
+    &__button--primary:hover {
+      background-color: $color-primary-dark;
+    }
+
+    &__button--secondary:hover {
+      background-color: $color-primary;
+      color: $color-surface;
+    }
+  }
+}
