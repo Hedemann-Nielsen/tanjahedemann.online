@@ -1,0 +1,89 @@
+@use "../../styles/abstracts/variables" as *;
+
+.cta {
+	padding-block: clamp(3rem, 6vw, 5rem);
+
+	background-color: $color-surface;
+	
+
+	background-size: cover;
+	background-position: center;
+
+	color: $color-surface;
+	&__wrapper {
+		overflow: hidden;
+		padding: clamp(4em, 7vw, 6rem);
+
+		background-image:
+			linear-gradient(rgba(20, 18, 16, 0.35), rgba(20, 18, 16, 0.35)),
+			url("/images/cta.jpg");
+
+		background-position: center;
+		background-size: cover;
+        border-radius: $radius-medium;
+	}
+
+	&__content {
+		max-width: 34rem;
+	}
+
+	&__eyebrow {
+		margin-bottom: 1rem;
+
+		color: rgba($color-surface, 0.8);
+
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	&__title {
+		margin-bottom: 1rem;
+
+		font-size: clamp(2.75rem, 6vw, 4.5rem);
+		line-height: 1;
+	}
+
+	&__description {
+		max-width: 28rem;
+		margin-bottom: 2rem;
+
+		color: rgba($color-surface, 0.9);
+	}
+
+	&__button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+
+		min-height: 3.4rem;
+		padding-inline: 1.75rem;
+
+		background-color: $color-primary;
+		border: 1px solid $color-primary;
+
+		color: $color-surface;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+
+		transition:
+			background-color $transition-default,
+			transform $transition-default;
+
+		span {
+			transition: transform $transition-default;
+		}
+
+		&:hover {
+			background-color: $color-primary-dark;
+			transform: translateY(-2px);
+
+			span {
+				transform: translateX(0.25rem);
+			}
+		}
+	}
+}

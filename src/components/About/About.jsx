@@ -1,52 +1,49 @@
-import { brands } from "../../data/brands";
 import { useLanguage } from "../../i18n/LanguageContext";
 import "./About.scss";
 
 function About() {
-  const { translations } = useLanguage();
-  const { about } = translations;
+	const { translations } = useLanguage();
+	const { about, stats } = translations;
 
-  return (
-    <section className="about section" id="about">
-      <div className="container about__inner">
-        <div className="about__media">
-          <img
-            className="about__image"
-            src="/images/about.jpg"
-            alt=""
-          />
-        </div>
+	return (
+		<section className="about" id="about">
+			<div className="container">
+				<div className="about__inner">
+					<div className="about__media">
+						<img className="about__image" src="/images/about.jpg" alt="" />
+					</div>
 
-        <div className="about__main">
-          <p className="about__eyebrow">{about.eyebrow}</p>
+					<div className="about__main">
+						<p className="about__eyebrow">{about.eyebrow}</p>
 
-          <h2 className="about__title">{about.title}</h2>
+						<h2 className="about__title">
+							{about.title} 
 
-          <p className="about__description">
-            {about.description}
-          </p>
-        </div>
+							<span className="about__title2"> {about.title2}</span>
+						</h2>
 
-        <ul className="about__highlights">
-          {about.highlights.map((highlight) => (
-            <li key={highlight}>{highlight}</li>
-          ))}
-        </ul>
+						<p className="about__description">{about.description}</p>
+					</div>
 
-        <div className="about__brands">
-          <p className="about__brands-title">
-            {about.trustedBy}
-          </p>
+					<ul className="about__highlights">
+						{about.highlights.map((highlight) => (
+							<li key={highlight}>{highlight}</li>
+						))}
+					</ul>
+				</div>
 
-          <ul className="about__brands-list">
-            {brands.map((brand) => (
-              <li key={brand}>{brand}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
+				<div className="about__stats" aria-label="Key statistics">
+					{stats.items.map((item) => (
+						<article className="about-stat" key={item.label}>
+							<strong className="about-stat__value">{item.value}</strong>
+
+							<span className="about-stat__label">{item.label}</span>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+	);
 }
 
 export default About;

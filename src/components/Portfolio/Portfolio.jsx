@@ -7,70 +7,85 @@ import "./Portfolio.scss";
 
 function Portfolio() {
 	const [selectedItem, setSelectedItem] = useState(null);
-	const { translations } = useLanguage();
+
+	const { language, translations } = useLanguage();
 	const { portfolio } = translations;
 
+	const featuredItems = portfolioItems
+		.filter((item) => item.featured)
+		.slice(0, 4);
+
 	const selectedContent = selectedItem
-		? portfolio.items[selectedItem.translationKey]
+		? selectedItem.content[language]
 		: null;
 
 	return (
-		<section className="portfolio section" id="work">
+		<section className="portfolio" id="work">
 			<div className="container">
 				<header className="portfolio__header">
-					<div>
-						<p className="portfolio__eyebrow">{portfolio.eyebrow}</p>
-						<h2 className="portfolio__title">{portfolio.title}</h2>
+					<div className="portfolio__heading">
+						<p className="portfolio__eyebrow">
+							{portfolio.eyebrow}
+						</p>
+
+						<h2 className="portfolio__title">
+							{portfolio.title}
+						</h2>
 					</div>
 
-					<div className="portfolio__header-right">
-						<p className="portfolio__description">{portfolio.description}</p>
-
-						<Link className="portfolio__link" to="/portfolio">
-							{portfolio.viewAll}
-							<span aria-hidden="true">→</span>
-						</Link>
-					</div>
+					<Link className="portfolio__link" to="/portfolio">
+						{portfolio.viewAll}
+						<span aria-hidden="true">→</span>
+					</Link>
 				</header>
 
 				<div className="portfolio__grid">
-					{portfolioItems
-						.filter((item) => item.featured)
-						.slice(0, 4)
-						.map((item) => {
-							const content = portfolio.items[item.translationKey];
+					{featuredItems.map((item) => {
+						const content = item.content[language];
 
-							return (
-								<article className="portfolio-card" key={item.id}>
-									<button
-										className="portfolio-card__button"
-										type="button"
-										onClick={() => setSelectedItem(item)}
-										aria-label={`Play ${content.title}`}>
-										<div className="portfolio-card__media">
-											<img
-												className="portfolio-card__image"
-												src={item.poster}
-												alt=""
-											/>
+						return (
+							<article
+								className="portfolio-card"
+								key={item.id}
+							>
+								<button
+									className="portfolio-card__button"
+									type="button"
+									onClick={() => setSelectedItem(item)}
+									aria-label={`${portfolio.playVideo}: ${content.title}`}
+								>
+									<div className="portfolio-card__media">
+										<img
+											className="portfolio-card__image"
+											src={item.poster}
+											alt=""
+										/>
 
-											<span className="portfolio-card__play" aria-hidden="true">
-												▶
-											</span>
-										</div>
+										<span
+											className="portfolio-card__play"
+											aria-hidden="true"
+										>
+											▶
+										</span>
+									</div>
 
-										<div className="portfolio-card__content">
-											<div className="portfolio-card__meta">
-												<span>{content.brand}</span>
-												<span>{content.category}</span>
-											</div>
+									<div className="portfolio-card__content">
+										<p className="portfolio-card__brand">
+											{content.brand}
+										</p>
 
-											<h3 className="portfolio-card__title">{content.title}</h3>
-										</div>
-									</button>
-								</article>
-							);
-						})}
+										<h3 className="portfolio-card__title">
+											{content.title}
+										</h3>
+
+										<p className="portfolio-card__category">
+											{content.category}
+										</p>
+									</div>
+								</button>
+							</article>
+						);
+					})}
 				</div>
 			</div>
 

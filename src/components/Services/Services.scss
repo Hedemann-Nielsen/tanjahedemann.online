@@ -1,7 +1,7 @@
 @use "../../styles/abstracts/variables" as *;
 
 .services {
-  background-color: $color-surface-muted;
+  background-color: $color-surface;
 
   &__header {
     display: grid;

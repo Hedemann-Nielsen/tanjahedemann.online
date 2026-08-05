@@ -1,64 +1,93 @@
+import { HashLink } from "react-router-hash-link";
 import { useLanguage } from "../../i18n/LanguageContext";
 import "./Hero.scss";
 
+const trustedBrands = [
+	"KnitPro",
+	"Muud",
+	"Sudio",
+	"A Knitter's World",
+	"Strikkediem",
+	"Trillegarn",
+	"By_Myr",
+	"Broomroad",
+];
+
 function Hero() {
-  const { translations } = useLanguage();
-  const { hero } = translations;
+	const { translations } = useLanguage();
+	const { hero } = translations;
 
-  return (
-    <section className="hero">
-      <div className="container hero__inner">
-        <div className="hero__content">
-          <p className="hero__eyebrow">{hero.eyebrow}</p>
+	return (
+		<section className="hero" aria-labelledby="hero-title">
+			<div className="hero__overlay" aria-hidden="true" />
 
-          <h1 className="hero__title">
-            {hero.titleStart}
-            <br />
-            <em>{hero.titleEnd}</em>
-          </h1>
+			<div className="container hero__inner">
+				<div className="hero__content">
+					<p className="hero__eyebrow">{hero.eyebrow}</p>
 
-          <p className="hero__description">{hero.description}</p>
+					<h1 className="hero__title" id="hero-title">
+						<span>{hero.titleStart}</span>
+						<em>{hero.titleEnd}</em>
+					</h1>
 
-          <div className="hero__actions">
-            <a className="hero__button hero__button--primary" href="#work">
-              {hero.primaryButton}
-            </a>
+					<p className="hero__description">{hero.description}</p>
 
-            <a className="hero__button hero__button--secondary" href="#contact">
-              {hero.secondaryButton}
-            </a>
-          </div>
-        </div>
+					<div className="hero__actions">
+						<HashLink
+							className="hero__button hero__button--primary"
+							smooth
+							to="/#work">
+							{hero.primaryButton}
 
-        <div className="hero__visual">
-          <div className="hero__image-wrapper">
-            <img
-              className="hero__image"
-              src="/images/portfolio/hero.jpg"
-              alt=""
-            />
-          </div>
+							<span aria-hidden="true">→</span>
+						</HashLink>
 
-          <div className="hero__stats">
-            <article className="hero__stat">
-              <strong>12K+</strong>
-              <span>Total reach</span>
-            </article>
+						<HashLink
+							className="hero__button hero__button--secondary"
+							smooth
+							to="/#contact">
+							{hero.secondaryButton}
+						</HashLink>
+					</div>
 
-            <article className="hero__stat">
-              <strong>5+</strong>
-              <span>Brand collaborations</span>
-            </article>
+					<div className="hero__trusted">
+						<p className="hero__trusted-label">Trusted by</p>
 
-            <article className="hero__stat">
-              <strong>DA / EN</strong>
-              <span>Content languages</span>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+						<ul
+							className="hero__trusted-list"
+							aria-label="Selected brand collaborations">
+							{trustedBrands.map((brand) => (
+								<li key={brand}>{brand}</li>
+							))}
+						</ul>
+					</div>
+				</div>
+
+				<div className="hero__stats" aria-label="Creator statistics">
+					<article className="hero__stat">
+						<strong>12K+</strong>
+						<span>Total reach</span>
+					</article>
+
+					<article className="hero__stat">
+						<strong>8+</strong>
+						<span>Brand collaborations</span>
+					</article>
+
+					<article className="hero__stat">
+						<strong>DA / EN</strong>
+						<span>Content languages</span>
+					</article>
+				</div>
+
+				<p className="hero__signature" aria-hidden="true">
+					Real people.
+					<br />
+					Real connection.
+				</p>
+			</div>
+		</section>
+	);
 }
 
 export default Hero;

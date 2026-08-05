@@ -1,188 +1,353 @@
 @use "../../styles/abstracts/variables" as *;
 
 .hero {
-  padding-block: 3rem 5rem;
+	position: relative;
+	overflow: hidden;
 
-  &__inner {
-    display: grid;
-    gap: 3rem;
-  }
+	display: flex;
+	align-items: center;
 
-  &__content {
-    max-width: 42rem;
-  }
+	height: 88vh;
+	padding-block: 8rem 1.5rem;
 
-  &__eyebrow {
-    margin-bottom: 1rem;
+	background-image: url("/images/portfolio/hero.jpg");
+	background-position: 55% center;
+	background-repeat: no-repeat;
+	background-size: cover;
 
-    color: $color-primary;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
+	color: $color-surface;
 
-  &__title {
-    margin-bottom: 1.5rem;
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
 
-    font-size: clamp(3rem, 14vw, 5.5rem);
+		background:
+			linear-gradient(
+				90deg,
+				rgba(14, 14, 14, 0.88) 0%,
+				rgba(14, 14, 14, 0.76) 35%,
+				rgba(14, 14, 14, 0.38) 62%,
+				rgba(14, 14, 14, 0.16) 100%
+			),
+			linear-gradient(0deg, rgba(14, 14, 14, 0.48) 0%, rgba(14, 14, 14, 0) 48%);
+	}
 
-    em {
-      font-weight: inherit;
-    }
-  }
+	&__inner {
+		position: relative;
+		z-index: 1;
 
-  &__description {
-    max-width: 34rem;
-    margin-bottom: 2rem;
+		display: grid;
+		gap: 2.5rem;
 
-    font-size: 1rem;
-  }
+		width: 100%;
+	}
 
-  &__actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
+	&__content {
+		max-width: 42rem;
+	}
 
-  &__button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+	&__eyebrow {
+		margin-bottom: 1.25rem;
 
-    min-height: 3.25rem;
-    padding-inline: 1.5rem;
+		color: $color-primary-light;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
 
-    border: 1px solid $color-primary;
-    border-radius: $radius-small;
+	&__title {
+		display: grid;
+		gap: 0;
 
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+		margin-bottom: 1.75rem;
 
-    transition:
-      background-color $transition-default,
-      color $transition-default,
-      transform $transition-default;
-  }
+		color: $color-surface;
+		font-size: clamp(3.4rem, 15vw, 5.8rem);
+		font-weight: 500;
+		letter-spacing: -0.04em;
+		line-height: 0.91;
+    max-width: 900px;
 
-  &__button--primary {
-    background-color: $color-primary;
-    color: $color-surface;
-  }
+		span,
+		em {
+			display: block;
+		}
 
-  &__button--secondary {
-    background-color: transparent;
-    color: $color-primary-dark;
-  }
+		em {
+			font-weight: inherit;
+		}
+	}
 
-  &__visual {
-    position: relative;
-  }
+	&__description {
+		max-width: 31rem;
+		margin-bottom: 1.75rem;
 
-  &__image-wrapper {
-    overflow: hidden;
-    aspect-ratio: 4 / 5;
+		color: rgba($color-surface, 0.82);
+		font-size: 0.95rem;
+		line-height: 1.7;
+	}
 
-    border-radius: $radius-large;
-    background-color: $color-surface-muted;
-  }
+	&__actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
 
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+		margin-bottom: 2.25rem;
+	}
 
-  &__stats {
-    display: grid;
-    gap: 0.75rem;
+	&__button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
 
-    margin-top: -2rem;
-    padding-inline: 1rem;
-  }
+		width: 100%;
+		min-height: 3.35rem;
+		padding-inline: 1.5rem;
 
-  &__stat {
-    padding: 1rem 1.25rem;
+		border: 1px solid transparent;
 
-    background-color: rgba($color-surface, 0.94);
-    border: 1px solid rgba($color-border, 0.8);
-    border-radius: $radius-medium;
-    box-shadow: $shadow-small;
-    backdrop-filter: blur(12px);
+		font-family: $font-body;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		line-height: 1;
+		text-align: center;
+		text-transform: uppercase;
 
-    strong,
-    span {
-      display: block;
-    }
+		transition:
+			background-color $transition-default,
+			border-color $transition-default,
+			color $transition-default,
+			transform $transition-default;
 
-    strong {
-      margin-bottom: 0.15rem;
+		span {
+			font-size: 1rem;
+			transition: transform $transition-default;
+		}
+	}
 
-      font-family: $font-heading;
-      font-size: 1.4rem;
-      font-weight: 500;
-    }
+	&__button--primary {
+		background-color: $color-primary;
+		border-color: $color-primary;
+		color: $color-surface;
+	}
 
-    span {
-      color: $color-text-muted;
-      font-size: 0.75rem;
-    }
-  }
+	&__button--secondary {
+		background-color: rgba(14, 14, 14, 0.2);
+		border-color: rgba($color-surface, 0.55);
+		color: $color-surface;
+		backdrop-filter: blur(0.5rem);
+	}
+
+	&__trusted {
+		max-width: 38rem;
+		padding-top: 1rem;
+
+		border-top: 1px solid rgba($color-surface, 0.28);
+	}
+
+	&__trusted-label {
+		margin-bottom: 0.85rem;
+
+		color: rgba($color-surface, 0.68);
+		font-size: 0.68rem;
+		letter-spacing: 0.04em;
+	}
+
+	&__trusted-list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.7rem 1.5rem;
+
+		margin: 0;
+		padding: 0;
+
+		list-style: none;
+
+		li {
+			color: $color-surface;
+			font-family: $font-body;
+			font-size: 0.9rem;
+			font-weight: 500;
+		}
+	}
+
+	&__stats {
+		display: grid;
+		gap: 0.75rem;
+
+		width: 100%;
+		max-width: 22rem;
+	}
+
+	&__stat {
+		display: block;
+
+		padding: 1.1rem 1.25rem;
+
+		background-color: rgba($color-surface, 0.96);
+		border: 1px solid rgba($color-border, 0.8);
+		border-radius: $radius-medium;
+		box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.14);
+		backdrop-filter: blur(1rem);
+
+		color: $color-text;
+
+		strong,
+		span {
+			display: block;
+		}
+
+		strong {
+			margin-bottom: 0.35rem;
+
+			font-family: $font-heading;
+			font-size: 1.55rem;
+			font-weight: 500;
+			line-height: 1;
+		}
+
+		span {
+			position: relative;
+
+			padding-bottom: 0.75rem;
+
+			color: $color-text-muted;
+			font-size: 0.72rem;
+			line-height: 1.4;
+
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+
+				width: 1.25rem;
+				height: 1px;
+
+				background-color: $color-primary;
+			}
+		}
+	}
+
+	&__signature {
+		display: none;
+	}
 }
 
 @media (min-width: $breakpoint-tablet) {
-  .hero {
-    padding-block: 5rem 7rem;
+	.hero {
+		padding-block: 8rem 3.5rem;
 
-    &__inner {
-      grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr);
-      align-items: center;
-      gap: 4rem;
-    }
+		background-position: center;
 
-    &__actions {
-      flex-direction: row;
-    }
+		&__inner {
+			grid-template-columns:
+				minmax(0, 1fr)
+				minmax(9rem, 11rem);
 
-    &__button {
-      width: auto;
-    }
+			align-items: center;
+			gap: clamp(3rem, 7vw, 7rem);
+		}
 
-    &__stats {
-      position: absolute;
-      top: 50%;
-      right: -1.5rem;
+		&__actions {
+			flex-direction: row;
+		}
 
-      width: 11rem;
-      margin-top: 0;
-      padding: 0;
+		&__button {
+			width: auto;
+			min-width: 11rem;
+		}
 
-      transform: translateY(-50%);
-    }
-  }
+		&__stats {
+			justify-self: end;
+
+			width: 11rem;
+		}
+
+		&__stat {
+			padding: 1.25rem;
+		}
+	}
 }
 
 @media (min-width: $breakpoint-desktop) {
-  .hero {
-    min-height: calc(100vh - 5rem);
+	.hero {
+		min-height: 88vh;
+		padding-block: 8.5rem 3.5rem;
 
-    &__inner {
-      min-height: inherit;
-    }
+		background-position: center 45%;
 
-    &__button:hover {
-      transform: translateY(-2px);
-    }
+		&__overlay {
+			background:
+				linear-gradient(
+					90deg,
+					rgba(14, 14, 14, 0.9) 0%,
+					rgba(14, 14, 14, 0.72) 35%,
+					rgba(14, 14, 14, 0.32) 62%,
+					rgba(14, 14, 14, 0.12) 100%
+				),
+				linear-gradient(0deg, rgba(14, 14, 14, 0.5) 0%, rgba(14, 14, 14, 0) 45%);
+		}
 
-    &__button--primary:hover {
-      background-color: $color-primary-dark;
-    }
+		&__inner {
+			grid-template-columns:
+				minmax(30rem, 1fr)
+				minmax(10rem, 11rem);
 
-    &__button--secondary:hover {
-      background-color: $color-primary;
-      color: $color-surface;
-    }
-  }
+			gap: clamp(5rem, 12vw, 12rem);
+		}
+
+		&__content {
+			align-self: center;
+		}
+
+		&__title {
+			font-size: clamp(4.75rem, 6.35vw, 6.65rem);
+		}
+
+		&__stats {
+			align-self: center;
+		}
+
+		&__signature {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+
+			display: block;
+
+			color: $color-primary-light;
+			font-family: $font-heading;
+			font-size: 1rem;
+			font-style: italic;
+			line-height: 1.2;
+			text-align: right;
+
+			transform: rotate(-3deg);
+		}
+
+		&__button:hover {
+			transform: translateY(-0.15rem);
+		}
+
+		&__button:hover span {
+			transform: translateX(0.25rem);
+		}
+
+		&__button--primary:hover {
+			background-color: $color-primary-dark;
+			border-color: $color-primary-dark;
+		}
+
+		&__button--secondary:hover {
+			background-color: $color-surface;
+			border-color: $color-surface;
+			color: $color-text;
+		}
+	}
 }

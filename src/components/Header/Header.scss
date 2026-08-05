@@ -1,9 +1,13 @@
 @use "../../styles/abstracts/variables" as *;
 
 .header {
-	position: sticky;
+	position: fixed;
 	top: 0;
+	right: 0;
+	left: 0;
 	z-index: 100;
+
+	width: 100%;
 
 	background-color: transparent;
 	border-bottom: 1px solid transparent;
@@ -16,11 +20,69 @@
 		box-shadow 300ms ease,
 		backdrop-filter 300ms ease;
 
+	// Forsiden, før der scrolles
+	&--transparent {
+		background-color: transparent;
+		border-bottom-color: transparent;
+
+		.header__logo,
+		.header__nav a {
+			color: $color-surface;
+		}
+
+		.header__menu-button {
+			border-color: rgba($color-surface, 0.55);
+			color: $color-surface;
+		}
+
+		.header__contact-link {
+			border-color: rgba($color-surface, 0.65);
+			color: $color-surface;
+		}
+	}
+
+	// Portfolio, contact og andre undersider
+	&--solid {
+		background-color: rgba($color-background, 0.98);
+		border-bottom-color: rgba($color-border, 0.8);
+
+		.header__logo,
+		.header__nav a {
+			color: $color-text;
+		}
+
+		.header__menu-button {
+			border-color: $color-border;
+			color: $color-text;
+		}
+
+		.header__contact-link {
+			border-color: $color-primary;
+			color: $color-primary-dark;
+		}
+	}
+
+	// Overstyrer både transparent og solid efter scroll
 	&--scrolled {
 		background-color: rgba($color-background, 0.96);
 		border-bottom-color: rgba($color-border, 0.8);
 		box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.05);
 		backdrop-filter: blur(1.125rem);
+
+		.header__logo,
+		.header__nav a {
+			color: $color-text;
+		}
+
+		.header__menu-button {
+			border-color: $color-border;
+			color: $color-text;
+		}
+
+		.header__contact-link {
+			border-color: $color-primary;
+			color: $color-primary-dark;
+		}
 	}
 
 	&__inner {
@@ -61,9 +123,12 @@
 
 		background-color: transparent;
 		border: 1px solid $color-border;
-		border-radius: $radius-round;
 
 		color: $color-text;
+
+		transition:
+			border-color $transition-default,
+			color $transition-default;
 
 		span {
 			display: block;
@@ -169,8 +234,8 @@
 			padding: 0.85rem 1.25rem;
 
 			border: 1px solid rgba($color-surface, 0.55);
-			border-radius: $radius-round;
 
+			color: $color-surface;
 			font-family: $font-body;
 			font-size: 0.8rem;
 			font-weight: 700;
@@ -195,6 +260,7 @@
 		}
 	}
 
+	// Sørger for hvide elementer, mens mobilmenuen er åben
 	&:has(.header__nav--open) {
 		.header__logo,
 		.header__menu-button {
@@ -223,8 +289,8 @@
 			z-index: auto;
 
 			flex-direction: row;
-			justify-content: flex-start;
 			align-items: center;
+			justify-content: flex-start;
 			gap: 2rem;
 
 			width: auto;
@@ -242,7 +308,6 @@
 
 				padding-block: 0.5rem;
 
-				color: $color-text;
 				font-family: $font-body;
 				font-size: 0.8rem;
 				font-weight: 700;
@@ -284,12 +349,16 @@
 			}
 
 			.header__contact-link {
+				margin-top: 0;
 				padding: 0.7rem 1.1rem;
 
 				border: 1px solid $color-primary;
-				border-radius: $radius-round;
 
-				color: $color-primary-dark;
+				font-family: $font-body;
+				font-size: 0.8rem;
+				font-weight: 700;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
 
 				&::after {
 					display: none;
@@ -297,10 +366,58 @@
 
 				&:hover {
 					background-color: $color-primary;
+					border-color: $color-primary;
 					color: $color-surface;
 				}
 
 				&.header__link--active {
+					background-color: $color-primary;
+					border-color: $color-primary;
+					color: $color-surface;
+				}
+			}
+		}
+
+		// Transparent desktop-header på forsiden
+		&--transparent:not(.header--scrolled) {
+			.header__logo,
+			.header__nav a {
+				color: $color-surface;
+			}
+
+			.header__nav a:hover {
+				color: $color-primary-light;
+			}
+
+			.header__nav a::after {
+				background-color: $color-primary-light;
+			}
+
+			.header__contact-link {
+				border-color: rgba($color-surface, 0.65);
+				color: $color-surface;
+
+				&:hover {
+					background-color: $color-surface;
+					border-color: $color-surface;
+					color: $color-text;
+				}
+			}
+		}
+
+		// Solid desktop-header på undersider og efter scroll
+		&--solid,
+		&--scrolled {
+			.header__logo,
+			.header__nav a {
+				color: $color-text;
+			}
+
+			.header__contact-link {
+				border-color: $color-primary;
+				color: $color-primary-dark;
+
+				&:hover {
 					background-color: $color-primary;
 					color: $color-surface;
 				}

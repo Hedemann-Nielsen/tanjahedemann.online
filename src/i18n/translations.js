@@ -4,13 +4,13 @@ export const translations = {
 			work: "Work",
 			about: "About",
 			services: "Services",
-			contact: "Contact",
+			contact: "Work with me",
 		},
 
 		hero: {
 			eyebrow: "UGC Creator & Content Specialist",
-			titleStart: "Authentic content",
-			titleEnd: "for modern brands.",
+			titleStart: "Content that",
+			titleEnd: "connects.",
 			description:
 				"I create warm, relatable and visually engaging content that helps brands connect with their audience.",
 			primaryButton: "View my work",
@@ -20,31 +20,8 @@ export const translations = {
 		portfolio: {
 			eyebrow: "Featured work",
 			title: "Content that connects",
-			description:
-				"A selection of product demonstrations, tutorials and lifestyle content created for brands.",
 			viewAll: "View all work",
-			items: {
-				knitproShowcase: {
-					brand: "KnitPro",
-					category: "Product showcase",
-					title: "Symfonie needle set",
-				},
-				knitproTutorial: {
-					brand: "KnitPro",
-					category: "Tutorial",
-					title: "Knitting technique",
-				},
-				lifestyle: {
-					brand: "Portfolio concept",
-					category: "Lifestyle",
-					title: "Authentic everyday content",
-				},
-				productDemo: {
-					brand: "Portfolio concept",
-					category: "Product demonstration",
-					title: "Everyday product content",
-				},
-			},
+			playVideo: "Play Video",
 		},
 
 		portfolioPage: {
@@ -67,10 +44,11 @@ export const translations = {
 		about: {
 			eyebrow: "About me",
 
-			title: "Creating authentic content that builds trust.",
+			title: "Hi, I'm",
+			title2: "Tanja",
 
 			description:
-				"I'm Tanja, a Danish content creator with several years of experience creating authentic content for brands. My background as both a knitwear designer and frontend web developer gives me a strong eye for aesthetics, storytelling and user experience.",
+				"A Danish content creator with several years of experience creating authentic content for brands. My background as both a knitwear designer and frontend web developer gives me a strong eye for aesthetics, storytelling and user experience.",
 
 			highlights: [
 				"Authentic UGC",
@@ -143,6 +121,15 @@ export const translations = {
 			],
 		},
 
+		cta: {
+			eyebrow: "Let's create together",
+			title: "Ready to elevate your brand?",
+			description:
+				"Authentic content that builds trust, inspires action and helps your products stand out.",
+
+			button: "Let's work together",
+		},
+
 		contact: {
 			eyebrow: "Let's create together",
 			title: "Ready to elevate your brand?",
@@ -158,22 +145,31 @@ export const translations = {
 			},
 		},
 
-        footer: {
-  tagline: "UGC Creator & Content Specialist",
-  location: "Based in Denmark",
+		footer: {
+			tagline: "UGC Creator & Content Specialist",
+			location: "Based in Denmark",
 
-  navigationTitle: "Navigation",
-  connectTitle: "Connect",
+			navigationTitle: "Navigation",
+			legalTitle: "Legal",
+			connectTitle: "Connect",
 
-  navigation: {
-    work: "Work",
-    about: "About",
-    services: "Services",
-    contact: "Contact",
-  },
+			navigation: {
+				work: "Work",
+				about: "About",
+				services: "Services",
+				contact: "Contact",
+			},
 
-  copyright: "All rights reserved.",
-},
+			legal: {
+				privacy: "Privacy policy",
+				cookie: "Cookie Policy",
+			},
+			connect: {
+				private: "Tanja Hedemann",
+				knitlig: "KNITlig",
+			},
+			copyright: "All rights reserved.",
+		},
 	},
 
 	da: {
@@ -181,13 +177,13 @@ export const translations = {
 			work: "Portfolio",
 			about: "Om mig",
 			services: "Ydelser",
-			contact: "Kontakt",
+			contact: "Lad os samarbejde",
 		},
 
 		hero: {
 			eyebrow: "UGC-creator og indholdsspecialist",
-			titleStart: "Autentisk indhold",
-			titleEnd: "til moderne brands.",
+			titleStart: "Indhold der",
+			titleEnd: "skaber tillid.",
 			description:
 				"Jeg skaber varmt, troværdigt og visuelt engagerende indhold, der hjælper brands med at skabe forbindelse til deres målgruppe.",
 			primaryButton: "Se mit arbejde",
@@ -197,31 +193,8 @@ export const translations = {
 		portfolio: {
 			eyebrow: "Udvalgt arbejde",
 			title: "Indhold, der skaber forbindelse",
-			description:
-				"Et udvalg af produktdemonstrationer, tutorials og livsstilsindhold skabt til brands.",
 			viewAll: "Se hele portfolioen",
-			items: {
-				knitproShowcase: {
-					brand: "KnitPro",
-					category: "Produktpræsentation",
-					title: "Symfonie strikkepindesæt",
-				},
-				knitproTutorial: {
-					brand: "KnitPro",
-					category: "Tutorial",
-					title: "Strikketeknik",
-				},
-				lifestyle: {
-					brand: "Portfolio-koncept",
-					category: "Livsstil",
-					title: "Autentisk hverdagsindhold",
-				},
-				productDemo: {
-					brand: "Portfolio-koncept",
-					category: "Produktdemonstration",
-					title: "Produktindhold fra hverdagen",
-				},
-			},
+			playVideo: "Afspil video",
 		},
 
 		portfolioPage: {
@@ -244,10 +217,11 @@ export const translations = {
 		about: {
 			eyebrow: "Om mig",
 
-			title: "Jeg skaber autentisk indhold, der skaber tillid.",
+			title: "Hej, jeg er",
+			title2: "Tanja",
 
 			description:
-				"Jeg er Tanja – en dansk content creator med flere års erfaring i at skabe autentisk indhold for brands. Min baggrund som både strikkedesigner og frontend-udvikler giver mig et skarpt øje for æstetik, historiefortælling og brugeroplevelser.",
+				"Jeg er en dansk content creator med flere års erfaring i at skabe autentisk indhold for brands. Min baggrund som både strikkedesigner og frontend-udvikler giver mig et skarpt øje for æstetik, historiefortælling og brugeroplevelser.",
 
 			highlights: [
 				"Autentisk UGC",
@@ -320,6 +294,15 @@ export const translations = {
 			],
 		},
 
+		cta: {
+			eyebrow: "Lad os skabe noget sammen",
+			title: "Klar til at løfte dit brand?",
+			description:
+				"Autentisk indhold der skaber tillid, inspirerer til handling og får dine produkter til at skille sig ud.",
+
+			button: "Lad os samarbejde",
+		},
+
 		contact: {
 			eyebrow: "Lad os skabe noget sammen",
 			title: "Klar til at løfte dit brand?",
@@ -335,21 +318,32 @@ export const translations = {
 			},
 		},
 
-        footer: {
-  tagline: "UGC-creator og indholdsspecialist",
-  location: "Bosat i Danmark",
+	
 
-  navigationTitle: "Navigation",
-  connectTitle: "Kontakt",
+		footer: {
+			tagline: "UGC-creator og indholdsspecialist",
+			location: "Bosat i Danmark",
+			
+			navigationTitle: "Navigation",
+			legalTitle: "Legal",
+			connectTitle: "Kontakt",
 
-  navigation: {
-    work: "Portfolio",
-    about: "Om mig",
-    services: "Ydelser",
-    contact: "Kontakt",
-  },
+			navigation: {
+				work: "Portfolio",
+				about: "Om mig",
+				services: "Ydelser",
+				contact: "Kontakt",
+			},
+			legal: {
+				privacy: "Privatlivspolitik",
+				cookie: "Cookiepolitik",
+			},
+				connect: {
+				private: "Tanja Hedemann",
+				knitlig: "KNITlig",
+			},
 
-  copyright: "Alle rettigheder forbeholdes.",
-},
+			copyright: "Alle rettigheder forbeholdes.",
+		},
 	},
 };
