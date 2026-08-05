@@ -12,6 +12,11 @@ $color-primary-light: #d8c8bb;
 
 $color-border: #ded6ce;
 
+//text
+$text-xs:  0.72rem;
+$text-sm: 0.8rem;
+$text-body: 0.9rem;
+
 // Typography
 $font-heading: "Playfair Display", Georgia, serif;
 $font-body: "Manrope", Arial, sans-serif;
@@ -36,3 +41,8 @@ $transition-default: 250ms ease;
 // Breakpoints
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
+
+//Spacing
+$section-spacing: clamp(3.5rem, 7vw, 6rem);
+$section-spacing-small: clamp(2.5rem, 5vw, 4rem);
+$section-spacing-large: clamp(5rem, 9vw, 8rem);

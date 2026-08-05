@@ -1,4 +1,5 @@
 @use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins" as *;
 
 .cookie-banner {
 	position: fixed;
@@ -33,11 +34,7 @@
 	&__eyebrow {
 		margin-bottom: 0.5rem;
 
-		color: $color-primary;
-		font-size: 0.68rem;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
+		@include eyebrow;
 	}
 
 	&__title {
@@ -65,7 +62,7 @@
 		justify-content: center;
 		gap: 0.5rem 1rem;
 
-		margin-top: 0.9rem;
+		margin-top: $text-sm;
 	}
 
 	&__text-link {

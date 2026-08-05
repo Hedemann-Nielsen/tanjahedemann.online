@@ -1,10 +1,10 @@
-@use "../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/mixins" as *;
 
 .cta {
-	padding-block: clamp(3rem, 6vw, 5rem);
+	padding-block: $section-spacing-small;
 
 	background-color: $color-surface;
-	
 
 	background-size: cover;
 	background-position: center;
@@ -20,7 +20,7 @@
 
 		background-position: center;
 		background-size: cover;
-        border-radius: $radius-medium;
+		border-radius: $radius-medium;
 	}
 
 	&__content {
@@ -29,19 +29,13 @@
 
 	&__eyebrow {
 		margin-bottom: 1rem;
-
-		color: rgba($color-surface, 0.8);
-
-		font-size: 0.72rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
+		@include eyebrow;
 	}
 
 	&__title {
 		margin-bottom: 1rem;
 
-		font-size: clamp(2.75rem, 6vw, 4.5rem);
+		font-size: $section-spacing-small;
 		line-height: 1;
 	}
 

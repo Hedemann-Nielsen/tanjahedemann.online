@@ -1,4 +1,5 @@
 @use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins" as *;
 
 .services {
   background-color: $color-surface;
@@ -13,11 +14,7 @@
   &__eyebrow {
     margin-bottom: 0.75rem;
 
-    color: $color-primary;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    @include eyebrow
   }
 
   &__title {

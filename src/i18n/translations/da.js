@@ -144,9 +144,18 @@ export const da = {
 
 		form: {
 			name: "Navn",
+			namePlaceholder: "Dit navn",
+
 			email: "E-mail",
+			emailPlaceholder: "Din e-mailadresse",
+
 			company: "Virksomhed",
+			companyPlaceholder: "Virksomhed (valgfrit)",
+
 			message: "Fortæl mig om dit projekt",
+			messagePlaceholder:
+				"Fortæl lidt om dit projekt, din tidsplan og det indhold, du har brug for.",
+
 			submit: "Send forespørgsel",
 		},
 	},
@@ -262,6 +271,7 @@ export const da = {
 			],
 		},
 	},
+
 	cookieBanner: {
 		eyebrow: "Dit privatliv",
 		title: "Vi bruger cookies",

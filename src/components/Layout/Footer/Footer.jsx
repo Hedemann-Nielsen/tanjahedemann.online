@@ -1,6 +1,6 @@
 import { HashLink } from "react-router-hash-link";
 import { Link, useLocation } from "react-router-dom";
-import { useLanguage } from "../../i18n/LanguageContext";
+import { useLanguage } from "../../../i18n/LanguageContext";
 import "./Footer.scss";
 
 function Footer({ onOpenLegal, onOpenCookieSettings }) {

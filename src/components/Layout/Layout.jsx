@@ -1,26 +1,15 @@
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "../Layout/Header/Header";
+import Footer from "../Layout/Footer/Footer";
 import LegalModal from "../LegalModal/LegalModal";
 import CookieBanner from "../CookieBanner/CookieBanner";
-import { useLanguage } from "../../i18n/LanguageContext";
+import useLegalModal from "../../Hooks/useLegalModal";
 
 function Layout() {
-	const [activeLegalModal, setActiveLegalModal] = useState(null);
-
-	const { translations } = useLanguage();
-	const { legal } = translations;
-
-	const legalContent = activeLegalModal
-		? legal[activeLegalModal]
-		: null;
-
+	const { legalContent, openLegalModal, closeLegalModal } = useLegalModal();
 	function openCookieSettings() {
-		window.dispatchEvent(
-			new CustomEvent("open-cookie-settings"),
-		);
+		window.dispatchEvent(new CustomEvent("open-cookie-settings"));
 	}
 
 	return (
@@ -32,21 +21,13 @@ function Layout() {
 			</main>
 
 			<Footer
-				onOpenLegal={setActiveLegalModal}
+				onOpenLegal={openLegalModal}
 				onOpenCookieSettings={openCookieSettings}
 			/>
-
-			<CookieBanner
-				onOpenCookiePolicy={() =>
-					setActiveLegalModal("cookies")
-				}
-			/>
+			<CookieBanner onOpenCookiePolicy={() => openLegalModal("cookies")} />
 
 			{legalContent && (
-				<LegalModal
-					content={legalContent}
-					onClose={() => setActiveLegalModal(null)}
-				/>
+				<LegalModal content={legalContent} onClose={closeLegalModal} />
 			)}
 		</>
 	);

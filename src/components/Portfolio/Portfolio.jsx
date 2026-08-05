@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../i18n/LanguageContext";
 import { portfolioItems } from "../../data/portfolio";
+import PortfolioCard from "./PortfolioCard";
 import VideoModal from "./VideoModal";
 import "./Portfolio.scss";
 
@@ -33,7 +34,10 @@ function Portfolio() {
 						</h2>
 					</div>
 
-					<Link className="portfolio__link" to="/portfolio">
+					<Link
+						className="portfolio__link"
+						to="/portfolio"
+					>
 						{portfolio.viewAll}
 						<span aria-hidden="true">→</span>
 					</Link>
@@ -44,46 +48,14 @@ function Portfolio() {
 						const content = item.content[language];
 
 						return (
-							<article
-								className="portfolio-card"
+							<PortfolioCard
 								key={item.id}
-							>
-								<button
-									className="portfolio-card__button"
-									type="button"
-									onClick={() => setSelectedItem(item)}
-									aria-label={`${portfolio.playVideo}: ${content.title}`}
-								>
-									<div className="portfolio-card__media">
-										<img
-											className="portfolio-card__image"
-											src={item.poster}
-											alt=""
-										/>
-
-										<span
-											className="portfolio-card__play"
-											aria-hidden="true"
-										>
-											▶
-										</span>
-									</div>
-
-									<div className="portfolio-card__content">
-										<p className="portfolio-card__brand">
-											{content.brand}
-										</p>
-
-										<h3 className="portfolio-card__title">
-											{content.title}
-										</h3>
-
-										<p className="portfolio-card__category">
-											{content.category}
-										</p>
-									</div>
-								</button>
-							</article>
+								item={item}
+								content={content}
+								playLabel={portfolio.playVideo}
+								onSelect={setSelectedItem}
+								headingLevel="h3"
+							/>
 						);
 					})}
 				</div>

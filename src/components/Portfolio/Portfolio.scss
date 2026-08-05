@@ -1,7 +1,9 @@
 @use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins" as *;
 
 .portfolio {
-	padding-block: clamp(3.5rem, 7vw, 6rem);
+
+	padding-block: $section-spacing;
 
 	background-color: $color-surface;
 
@@ -17,11 +19,7 @@
 	&__eyebrow {
 		margin-bottom: 0.65rem;
 
-		color: $color-primary;
-		font-size: 0.72rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
+		@include eyebrow;
 	}
 
 	&__title {
@@ -45,7 +43,7 @@
 		border: 1px solid $color-primary;
 
 		color: $color-primary-dark;
-		font-size: 0.72rem;
+		font-size: $text-xs;
 		font-weight: 700;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -57,7 +55,6 @@
 
 		span {
 			font-size: 1rem;
-
 			transition: transform $transition-default;
 		}
 	}
@@ -66,179 +63,6 @@
 		display: grid;
 		gap: 2rem;
 	}
-}
-
-.portfolio-card {
-	min-width: 0;
-
-	&__button {
-		display: block;
-
-		width: 100%;
-		padding: 0;
-
-		background-color: transparent;
-		color: inherit;
-		text-align: left;
-	}
-
-	&__media {
-		position: relative;
-		overflow: hidden;
-
-		aspect-ratio: 1 / 1;
-
-		background-color: $color-surface-muted;
-	}
-
-	&__image {
-		display: block;
-
-		width: 100%;
-		height: 100%;
-
-		object-fit: cover;
-
-		transition:
-			transform 450ms ease,
-			filter 450ms ease;
-	}
-
-	&__play {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-
-		display: grid;
-		place-items: center;
-
-		width: 3.25rem;
-		height: 3.25rem;
-		padding-left: 0.15rem;
-
-		background-color: rgba($color-surface, 0.94);
-		border: 1px solid rgba($color-border, 0.8);
-		border-radius: 50%;
-		box-shadow: $shadow-small;
-		backdrop-filter: blur(0.5rem);
-
-		color: $color-text;
-		font-size: 0.8rem;
-
-		transform: translate(-50%, -50%);
-
-		transition:
-			background-color $transition-default,
-			border-color $transition-default,
-			color $transition-default,
-			transform $transition-default;
-	}
-
-	&__content {
-		padding-top: 0.9rem;
-	}
-
-	&__brand {
-		margin-bottom: 0.3rem;
-
-		color: $color-text;
-		font-size: 0.68rem;
-		font-weight: 700;
-		letter-spacing: 0.07em;
-		text-transform: uppercase;
-	}
-
-	&__title {
-		margin-bottom: 0.2rem;
-
-		font-family: $font-heading;
-		font-size: 1.25rem;
-		font-weight: 500;
-		line-height: 1.2;
-	}
-
-	&__category {
-		color: $color-text-muted;
-		font-size: 0.78rem;
-		line-height: 1.4;
-	}
-}
-
-.video-modal {
-	width: min(calc(100% - 2rem), 30rem);
-	max-height: calc(100dvh - 2rem);
-	padding: 0;
-
-	background-color: transparent;
-	border: 0;
-
-	&::backdrop {
-		background-color: rgba(20, 18, 16, 0.82);
-		backdrop-filter: blur(0.35rem);
-	}
-
-	&__content {
-		position: relative;
-		overflow: hidden;
-
-		background-color: $color-surface;
-	}
-
-	&__close {
-		position: absolute;
-		top: 0.75rem;
-		right: 0.75rem;
-		z-index: 2;
-
-		display: grid;
-		place-items: center;
-
-		width: 2.75rem;
-		height: 2.75rem;
-		padding: 0;
-
-		background-color: rgba($color-surface, 0.94);
-		border: 1px solid rgba($color-border, 0.8);
-		border-radius: 50%;
-		box-shadow: $shadow-small;
-
-		color: $color-text;
-		font-size: 1.6rem;
-		line-height: 1;
-	}
-
-	&__video {
-		display: block;
-
-		width: 100%;
-		max-height: calc(100dvh - 10rem);
-
-		aspect-ratio: 9 / 16;
-
-		background-color: #000;
-
-		object-fit: contain;
-	}
-
-	&__text {
-		padding: 1rem 1.25rem 1.25rem;
-
-		p,
-		span {
-			color: $color-text-muted;
-			font-size: 0.75rem;
-		}
-
-		h3 {
-			margin-block: 0.2rem;
-
-			font-size: 1.3rem;
-		}
-	}
-}
-
-body.modal-open {
-	overflow: hidden;
 }
 
 @media (min-width: $breakpoint-tablet) {
@@ -278,21 +102,6 @@ body.modal-open {
 			span {
 				transform: translateX(0.25rem);
 			}
-		}
-	}
-
-	.portfolio-card {
-		&:hover &__image {
-			filter: brightness(0.9);
-			transform: scale(1.035);
-		}
-
-		&:hover &__play {
-			background-color: $color-primary;
-			border-color: $color-primary;
-			color: $color-surface;
-
-			transform: translate(-50%, -50%) scale(1.08);
 		}
 	}
 }

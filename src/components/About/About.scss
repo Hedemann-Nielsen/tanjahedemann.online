@@ -1,8 +1,8 @@
 @use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins" as *;
 
 .about {
-	padding-block: clamp(3.5rem, 7vw, 6rem);
-
+	padding-block: $section-spacing;
 	background-color: $color-surface-muted;
 
 	&__inner {
@@ -34,16 +34,12 @@
 	}
 
 	&__eyebrow {
-		color: $color-primary;
-		font-size: 0.72rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
+	@include eyebrow
 	}
 
 	&__title {
 		max-width: 500px;
-		font-size: clamp(2.5rem, 9vw, 4.5rem);
+		font-size: $section-spacing-small;
 		font-weight: 500;
 		letter-spacing: -0.035em;
 		line-height: 1;
@@ -122,7 +118,7 @@
 		margin-bottom: 0.45rem;
 
 		font-family: $font-heading;
-		font-size: clamp(2rem, 9vw, 3.25rem);
+		font-size: $section-spacing-small;
 		font-weight: 500;
 		line-height: 1;
 	}
@@ -190,7 +186,7 @@
 				minmax(24rem, 1.15fr)
 				minmax(13rem, 0.65fr);
 
-			gap: clamp(3rem, 5vw, 5rem);
+			gap: $section-spacing-small;
 		}
 
 		&__media {

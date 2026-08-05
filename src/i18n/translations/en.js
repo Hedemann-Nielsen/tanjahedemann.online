@@ -144,9 +144,18 @@ export const en = {
 
 		form: {
 			name: "Name",
+			namePlaceholder: "Your name",
+
 			email: "Email",
+			emailPlaceholder: "Email address",
+
 			company: "Company",
+			companyPlaceholder: "Company (optional)",
+
 			message: "Tell me about your project",
+			messagePlaceholder:
+				"Tell me a little about your project, timeline and the content you need.",
+
 			submit: "Send enquiry",
 		},
 	},

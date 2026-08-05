@@ -87,6 +87,7 @@ function Contact() {
 								name="name"
 								type="text"
 								autoComplete="name"
+								placeholder={contact.form.namePlaceholder}
 								required
 							/>
 						</div>
@@ -101,6 +102,7 @@ function Contact() {
 								name="email"
 								type="email"
 								autoComplete="email"
+								placeholder={contact.form.emailPlaceholder}
 								required
 							/>
 						</div>
@@ -114,12 +116,13 @@ function Contact() {
 								id="contact-company"
 								name="company"
 								type="text"
+								placeholder={contact.form.companyPlaceholder}
 								autoComplete="organization"
 							/>
 						</div>
 
 						<div className="contact__field contact__field--full">
-							<label htmlFor="contact-message">
+							<label htmlFor="contact-message" >
 								{contact.form.message}
 							</label>
 
@@ -127,6 +130,7 @@ function Contact() {
 								id="contact-message"
 								name="message"
 								rows="7"
+								placeholder={contact.form.messagePlaceholder}
 								required
 							/>
 						</div>

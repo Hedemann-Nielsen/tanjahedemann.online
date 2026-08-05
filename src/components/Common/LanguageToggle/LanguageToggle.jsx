@@ -1,14 +1,14 @@
-import { useLanguage } from "../../i18n/LanguageContext";
+import { useLanguage } from "../../../i18n/LanguageContext";
 import "./LanguageToggle.scss";
 
-function LanguageToggle() {
+function LanguageToggle({ className = "" }) {
   const { language, toggleLanguage } = useLanguage();
 
   const nextLanguage = language === "en" ? "DA" : "EN";
 
   return (
     <button
-      className="language-toggle"
+      className={'language-toggle ${className}' }
       type="button"
       onClick={toggleLanguage}
       aria-label={

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HashLink } from "react-router-hash-link";
-import { useLanguage } from "../../i18n/LanguageContext";
+import { useLanguage } from "../../../i18n/LanguageContext";
+import LanguageToggle from "../../../components/Common/LanguageToggle/LanguageToggle";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.scss";
 
@@ -93,16 +94,19 @@ function Header() {
 	}, []);
 
 	return (
+	<>
 		<header
 			className={`header 
 				${isScrolled ? "header--scrolled" : ""} 
-				${isHome ? "header--transparent" : "header--solid"}`}>
+				${isHome ? "header--transparent" : "header--solid"}`}
+		>
 			<div className="container header__inner">
 				<HashLink
 					className="header__logo"
 					smooth
 					to="/#top"
-					onClick={closeMenu}>
+					onClick={closeMenu}
+				>
 					Tanja Hedemann
 				</HashLink>
 
@@ -112,57 +116,78 @@ function Header() {
 					aria-expanded={isMenuOpen}
 					aria-controls="main-navigation"
 					aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-					onClick={() => setIsMenuOpen((current) => !current)}>
+					onClick={() =>
+						setIsMenuOpen((current) => !current)
+					}
+				>
 					<span />
 					<span />
 				</button>
 
 				<nav
 					id="main-navigation"
-					className={`header__nav ${isMenuOpen ? "header__nav--open" : ""}`}
-					aria-label="Main navigation">
+					className={`header__nav ${
+						isMenuOpen ? "header__nav--open" : ""
+					}`}
+					aria-label="Main navigation"
+				>
 					<HashLink
 						className={`header__link ${
-							activeSection === "work" ? "header__link--active" : ""
+							activeSection === "work"
+								? "header__link--active"
+								: ""
 						}`}
 						smooth
 						to="/#work"
-						onClick={closeMenu}>
+						onClick={closeMenu}
+					>
 						{navigation.work}
 					</HashLink>
 
 					<HashLink
 						className={`header__link ${
-							activeSection === "about" ? "header__link--active" : ""
+							activeSection === "about"
+								? "header__link--active"
+								: ""
 						}`}
 						smooth
 						to="/#about"
-						onClick={closeMenu}>
+						onClick={closeMenu}
+					>
 						{navigation.about}
 					</HashLink>
 
 					<HashLink
 						className={`header__link ${
-							activeSection === "services" ? "header__link--active" : ""
+							activeSection === "services"
+								? "header__link--active"
+								: ""
 						}`}
 						smooth
 						to="/#services"
-						onClick={closeMenu}>
+						onClick={closeMenu}
+					>
 						{navigation.services}
 					</HashLink>
 
 					<Link
 						className={`header__link header__contact-link ${
-							isContactPage ? "header__link--active" : ""
+							isContactPage
+								? "header__link--active"
+								: ""
 						}`}
 						to="/contact"
-						onClick={closeMenu}>
+						onClick={closeMenu}
+					>
 						{navigation.contact}
 					</Link>
 				</nav>
 			</div>
 		</header>
-	);
+
+		<LanguageToggle className="header__language-toggle" />
+	</>
+);
 }
 
 export default Header;

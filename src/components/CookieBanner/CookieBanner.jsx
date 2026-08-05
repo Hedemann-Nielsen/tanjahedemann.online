@@ -1,54 +1,32 @@
 import { useEffect, useState } from "react";
 import { useLanguage } from "../../i18n/LanguageContext";
+import {
+	DEFAULT_COOKIE_PREFERENCES,
+	getStoredCookieConsent,
+	saveCookieConsent,
+} from "../../utils/cookieConsent";
 import "./CookieBanner.scss";
 
-const STORAGE_KEY = "tanja-cookie-consent";
-const CONSENT_VERSION = 1;
-
-const defaultPreferences = {
-	necessary: true,
-	analytics: false,
-	marketing: false,
-};
 
 function CookieBanner({ onOpenCookiePolicy }) {
 	const { translations } = useLanguage();
 	const { cookieBanner } = translations;
-
+	
 	const [isVisible, setIsVisible] = useState(false);
 	const [showSettings, setShowSettings] = useState(false);
-	const [preferences, setPreferences] = useState(defaultPreferences);
+	
+	const [preferences, setPreferences] = useState(DEFAULT_COOKIE_PREFERENCES);
 
 	useEffect(() => {
 		function loadConsent() {
-			try {
-				const storedConsent = localStorage.getItem(STORAGE_KEY);
+			const storedConsent = getStoredCookieConsent();
 
-				if (!storedConsent) {
-					setIsVisible(true);
-					return;
-				}
-
-				const parsedConsent = JSON.parse(storedConsent);
-
-				if (parsedConsent.version !== CONSENT_VERSION) {
-					setIsVisible(true);
-					return;
-				}
-
-				setPreferences({
-					necessary: true,
-					analytics: Boolean(
-						parsedConsent.preferences?.analytics,
-					),
-					marketing: Boolean(
-						parsedConsent.preferences?.marketing,
-					),
-				});
-			} catch {
-				localStorage.removeItem(STORAGE_KEY);
+			if (!storedConsent) {
 				setIsVisible(true);
+				return;
 			}
+
+			setPreferences(storedConsent.preferences);
 		}
 
 		function openCookieSettings() {
@@ -58,44 +36,22 @@ function CookieBanner({ onOpenCookiePolicy }) {
 
 		loadConsent();
 
-		window.addEventListener(
-			"open-cookie-settings",
-			openCookieSettings,
-		);
+		window.addEventListener("open-cookie-settings", openCookieSettings);
 
 		return () => {
-			window.removeEventListener(
-				"open-cookie-settings",
-				openCookieSettings,
-			);
+			window.removeEventListener("open-cookie-settings", openCookieSettings);
 		};
 	}, []);
 
-	function saveConsent(updatedPreferences) {
-		const consent = {
-			version: CONSENT_VERSION,
-			updatedAt: new Date().toISOString(),
-			preferences: {
-				necessary: true,
-				analytics: updatedPreferences.analytics,
-				marketing: updatedPreferences.marketing,
-			},
-		};
+	function loadConsent() {
+		const storedConsent = getStoredCookieConsent();
 
-		localStorage.setItem(
-			STORAGE_KEY,
-			JSON.stringify(consent),
-		);
+		if (!storedConsent) {
+			setIsVisible(true);
+			return;
+		}
 
-		setPreferences(consent.preferences);
-		setShowSettings(false);
-		setIsVisible(false);
-
-		window.dispatchEvent(
-			new CustomEvent("cookie-consent-updated", {
-				detail: consent,
-			}),
-		);
+		setPreferences(storedConsent.preferences);
 	}
 
 	function acceptAll() {
@@ -134,19 +90,13 @@ function CookieBanner({ onOpenCookiePolicy }) {
 			className={`cookie-banner ${
 				showSettings ? "cookie-banner--settings-open" : ""
 			}`}
-			aria-labelledby="cookie-banner-title"
-		>
+			aria-labelledby="cookie-banner-title">
 			<div className="cookie-banner__inner">
 				<div className="cookie-banner__top">
 					<div className="cookie-banner__content">
-						<p className="cookie-banner__eyebrow">
-							{cookieBanner.eyebrow}
-						</p>
+						<p className="cookie-banner__eyebrow">{cookieBanner.eyebrow}</p>
 
-						<h2
-							className="cookie-banner__title"
-							id="cookie-banner-title"
-						>
+						<h2 className="cookie-banner__title" id="cookie-banner-title">
 							{cookieBanner.title}
 						</h2>
 
@@ -158,25 +108,18 @@ function CookieBanner({ onOpenCookiePolicy }) {
 							<button
 								className="cookie-banner__text-link"
 								type="button"
-								onClick={onOpenCookiePolicy}
-							>
+								onClick={onOpenCookiePolicy}>
 								{cookieBanner.policy}
 							</button>
 
-							<span
-								className="cookie-banner__link-divider"
-								aria-hidden="true"
-							>
+							<span className="cookie-banner__link-divider" aria-hidden="true">
 								|
 							</span>
 
 							<button
 								className="cookie-banner__text-link"
 								type="button"
-								onClick={() =>
-									setShowSettings((current) => !current)
-								}
-							>
+								onClick={() => setShowSettings((current) => !current)}>
 								{showSettings
 									? cookieBanner.hideSettings
 									: cookieBanner.settings}
@@ -188,16 +131,14 @@ function CookieBanner({ onOpenCookiePolicy }) {
 						<button
 							className="cookie-banner__button cookie-banner__button--primary"
 							type="button"
-							onClick={acceptAll}
-						>
+							onClick={acceptAll}>
 							{cookieBanner.acceptAll}
 						</button>
 
 						<button
 							className="cookie-banner__button cookie-banner__button--secondary"
 							type="button"
-							onClick={rejectOptional}
-						>
+							onClick={rejectOptional}>
 							{cookieBanner.rejectOptional}
 						</button>
 					</div>
@@ -209,9 +150,7 @@ function CookieBanner({ onOpenCookiePolicy }) {
 							<div>
 								<h3>{cookieBanner.necessary.title}</h3>
 
-								<p>
-									{cookieBanner.necessary.description}
-								</p>
+								<p>{cookieBanner.necessary.description}</p>
 							</div>
 
 							<span className="cookie-banner__required">
@@ -223,25 +162,19 @@ function CookieBanner({ onOpenCookiePolicy }) {
 							<div>
 								<h3>{cookieBanner.analytics.title}</h3>
 
-								<p>
-									{cookieBanner.analytics.description}
-								</p>
+								<p>{cookieBanner.analytics.description}</p>
 							</div>
 
 							<label className="cookie-banner__toggle">
 								<input
 									type="checkbox"
 									checked={preferences.analytics}
-									onChange={() =>
-										updatePreference("analytics")
-									}
+									onChange={() => updatePreference("analytics")}
 								/>
 
 								<span aria-hidden="true" />
 
-								<span className="sr-only">
-									{cookieBanner.analytics.title}
-								</span>
+								<span className="sr-only">{cookieBanner.analytics.title}</span>
 							</label>
 						</div>
 
@@ -249,33 +182,26 @@ function CookieBanner({ onOpenCookiePolicy }) {
 							<div>
 								<h3>{cookieBanner.marketing.title}</h3>
 
-								<p>
-									{cookieBanner.marketing.description}
-								</p>
+								<p>{cookieBanner.marketing.description}</p>
 							</div>
 
 							<label className="cookie-banner__toggle">
 								<input
 									type="checkbox"
 									checked={preferences.marketing}
-									onChange={() =>
-										updatePreference("marketing")
-									}
+									onChange={() => updatePreference("marketing")}
 								/>
 
 								<span aria-hidden="true" />
 
-								<span className="sr-only">
-									{cookieBanner.marketing.title}
-								</span>
+								<span className="sr-only">{cookieBanner.marketing.title}</span>
 							</label>
 						</div>
 
 						<button
 							className="cookie-banner__save"
 							type="button"
-							onClick={saveCurrentPreferences}
-						>
+							onClick={saveCurrentPreferences}>
 							{cookieBanner.savePreferences}
 							<span aria-hidden="true">→</span>
 						</button>

@@ -1,17 +1,8 @@
 import { HashLink } from "react-router-hash-link";
 import { useLanguage } from "../../i18n/LanguageContext";
+import { brands } from "../../data/brands";
 import "./Hero.scss";
 
-const trustedBrands = [
-	"KnitPro",
-	"Muud",
-	"Sudio",
-	"A Knitter's World",
-	"Strikkediem",
-	"Trillegarn",
-	"By_Myr",
-	"Broomroad",
-];
 
 function Hero() {
 	const { translations } = useLanguage();
@@ -52,11 +43,13 @@ function Hero() {
 					<div className="hero__trusted">
 						<p className="hero__trusted-label">Trusted by</p>
 
-						<ul
-							className="hero__trusted-list"
-							aria-label="Selected brand collaborations">
-							{trustedBrands.map((brand) => (
-								<li key={brand}>{brand}</li>
+						<ul className="hero__trusted-list">
+							{brands.map((brand) => (
+								<li key={brand.name}>
+									<a href={brand.url} target="_blank" rel="noopener noreferrer">
+										{brand.name}
+									</a>
+								</li>
 							))}
 						</ul>
 					</div>
@@ -78,12 +71,6 @@ function Hero() {
 						<span>Content languages</span>
 					</article>
 				</div>
-
-				<p className="hero__signature" aria-hidden="true">
-					Real people.
-					<br />
-					Real connection.
-				</p>
 			</div>
 		</section>
 	);

@@ -1,4 +1,5 @@
 @use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins" as *;
 
 .hero {
 	position: relative;
@@ -7,7 +8,8 @@
 	display: flex;
 	align-items: center;
 
-	height: 88vh;
+	min-height: 100svh;
+	height: auto;
 	padding-block: 8rem 1.5rem;
 
 	background-image: url("/images/portfolio/hero.jpg");
@@ -50,11 +52,7 @@
 	&__eyebrow {
 		margin-bottom: 1.25rem;
 
-		color: $color-primary-light;
-		font-size: 0.72rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
+		@include eyebrow(rgba($color-surface, 0.8));
 	}
 
 	&__title {
@@ -68,7 +66,7 @@
 		font-weight: 500;
 		letter-spacing: -0.04em;
 		line-height: 0.91;
-    max-width: 900px;
+		max-width: 900px;
 
 		span,
 		em {
@@ -110,7 +108,7 @@
 		border: 1px solid transparent;
 
 		font-family: $font-body;
-		font-size: 0.72rem;
+		font-size: $text-xs;
 		font-weight: 700;
 		letter-spacing: 0.06em;
 		line-height: 1;
@@ -159,20 +157,44 @@
 
 	&__trusted-list {
 		display: flex;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
 		align-items: center;
-		gap: 0.7rem 1.5rem;
-
-		margin: 0;
-		padding: 0;
+		gap: 2rem;
+		overflow-x: auto;
 
 		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 
 		li {
-			color: $color-surface;
-			font-family: $font-body;
-			font-size: 0.9rem;
+			flex: 0 0 auto;
+		}
+
+		a {
+			display: block;
+
+			color: rgba($color-surface, 0.75);
+			font-family: $font-heading;
+			font-size: 1.3rem;
 			font-weight: 500;
+			letter-spacing: -0.02em;
+			text-decoration: none;
+			white-space: nowrap;
+
+			transition:
+				color $transition-default,
+				opacity $transition-default,
+				transform $transition-default;
+
+			&:hover {
+				color: rgba($color-surface, 0.82);
+				opacity: 0.75;
+				transform: translateY(-1px);
+			}
 		}
 	}
 
@@ -217,7 +239,7 @@
 			padding-bottom: 0.75rem;
 
 			color: $color-text-muted;
-			font-size: 0.72rem;
+			font-size: $text-xs;
 			line-height: 1.4;
 
 			&::after {
@@ -232,10 +254,6 @@
 				background-color: $color-primary;
 			}
 		}
-	}
-
-	&__signature {
-		display: none;
 	}
 }
 
@@ -277,7 +295,7 @@
 
 @media (min-width: $breakpoint-desktop) {
 	.hero {
-		min-height: 88vh;
+		min-height: 100svh;
 		padding-block: 8.5rem 3.5rem;
 
 		background-position: center 45%;
@@ -303,32 +321,22 @@
 		}
 
 		&__content {
-			align-self: center;
+			max-width: 48rem;
+		}
+		&__trusted {
+			width: max-content;
+			max-width: 48rem;
 		}
 
+		&__trusted-list {
+			overflow-x: visible;
+		}
 		&__title {
 			font-size: clamp(4.75rem, 6.35vw, 6.65rem);
 		}
 
 		&__stats {
 			align-self: center;
-		}
-
-		&__signature {
-			position: absolute;
-			right: 0;
-			bottom: 0;
-
-			display: block;
-
-			color: $color-primary-light;
-			font-family: $font-heading;
-			font-size: 1rem;
-			font-style: italic;
-			line-height: 1.2;
-			text-align: right;
-
-			transform: rotate(-3deg);
 		}
 
 		&__button:hover {

@@ -1,4 +1,4 @@
-@use "../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/variables" as *;
 
 .header {
 	position: fixed;
@@ -237,7 +237,7 @@
 
 			color: $color-surface;
 			font-family: $font-body;
-			font-size: 0.8rem;
+			font-size: $text-sm;
 			font-weight: 700;
 			letter-spacing: 0.06em;
 			text-transform: uppercase;
@@ -248,7 +248,7 @@
 
 			&:hover {
 				background-color: $color-surface;
-				color: $color-text;
+				color: $color-surface-muted;
 				transform: none;
 			}
 
@@ -259,14 +259,23 @@
 			}
 		}
 	}
+	&__language-toggle {
+		position: fixed;
+		right: 1.5rem;
+		bottom: 1.5rem;
+		z-index: 110;
 
+		color: $color-text;
+	}
 	// Sørger for hvide elementer, mens mobilmenuen er åben
 	&:has(.header__nav--open) {
 		.header__logo,
 		.header__menu-button {
 			color: $color-surface;
 		}
-
+		.header__language-toggle {
+			color: $color-surface;
+		}
 		.header__menu-button {
 			border-color: rgba($color-surface, 0.35);
 		}
@@ -309,7 +318,7 @@
 				padding-block: 0.5rem;
 
 				font-family: $font-body;
-				font-size: 0.8rem;
+				font-size: $text-sm;
 				font-weight: 700;
 				letter-spacing: 0.04em;
 				line-height: normal;
@@ -355,7 +364,7 @@
 				border: 1px solid $color-primary;
 
 				font-family: $font-body;
-				font-size: 0.8rem;
+				font-size: $text-sm;
 				font-weight: 700;
 				letter-spacing: 0.04em;
 				text-transform: uppercase;
@@ -384,9 +393,11 @@
 			.header__nav a {
 				color: $color-surface;
 			}
-
+			.header__language-toggle {
+				color: $color-text;
+			}
 			.header__nav a:hover {
-				color: $color-primary-light;
+				color: $color-surface;
 			}
 
 			.header__nav a::after {
@@ -398,8 +409,8 @@
 				color: $color-surface;
 
 				&:hover {
-					background-color: $color-surface;
-					border-color: $color-surface;
+					background-color: $color-primary;
+					border-color: $color-primary;
 					color: $color-text;
 				}
 			}
@@ -412,7 +423,9 @@
 			.header__nav a {
 				color: $color-text;
 			}
-
+			.header__language-toggle {
+				color: $color-text;
+			}
 			.header__contact-link {
 				border-color: $color-primary;
 				color: $color-primary-dark;

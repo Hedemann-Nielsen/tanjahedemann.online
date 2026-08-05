@@ -1,8 +1,9 @@
 @use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins" as *;
 
 .contact {
 	min-height: 100vh;
-	padding-block: 9rem clamp(4rem, 8vw, 7rem);
+	padding-block: 9rem $section-spacing-small;
 
 	background-color: $color-surface;
 
@@ -10,25 +11,20 @@
 		display: grid;
 		gap: 2rem;
 
-		padding-bottom: clamp(3rem, 6vw, 5rem);
+		padding-bottom: $section-spacing-small;
 
 		border-bottom: 1px solid $color-border;
 	}
 
 	&__eyebrow {
 		margin-bottom: 0.75rem;
-
-		color: $color-primary;
-		font-size: 0.72rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
+		@include eyebrow;
 	}
 
 	&__title {
 		max-width: 52rem;
 
-		font-size: clamp(3rem, 12vw, 6rem);
+		font-size: $section-spacing-small;
 		font-weight: 500;
 		letter-spacing: -0.04em;
 		line-height: 0.98;
@@ -46,7 +42,7 @@
 		display: grid;
 		gap: 3.5rem;
 
-		padding-top: clamp(3rem, 6vw, 5rem);
+		padding-top: $section-spacing-small;
 	}
 
 	&__details {
@@ -62,14 +58,14 @@
 		a,
 		p:not(.contact__detail-label) {
 			color: $color-text-muted;
-			font-size: 0.9rem;
+			font-size: $text-sm;
 			line-height: 1.6;
 		}
 	}
 
 	&__detail-label {
 		color: $color-text;
-		font-size: 0.72rem;
+		font-size: $text-xs;
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -92,7 +88,7 @@
 
 		label {
 			color: $color-text;
-			font-size: 0.72rem;
+			font-size: $text-xs;
 			font-weight: 700;
 			letter-spacing: 0.07em;
 			text-transform: uppercase;
@@ -101,7 +97,7 @@
 		input,
 		textarea {
 			width: 100%;
-			padding: 0.9rem 0;
+			padding: $text-sm 0;
 
 			background-color: transparent;
 			border: 0;
@@ -116,6 +112,10 @@
 
 			&:focus {
 				border-color: $color-primary-dark;
+			}
+			&::placeholder {
+				font-size: $text-xs;
+				color: rgba($color-text-muted, 0.65);
 			}
 		}
 
@@ -177,7 +177,7 @@
 				minmax(14rem, 0.55fr)
 				minmax(0, 1.45fr);
 
-			gap: clamp(4rem, 8vw, 8rem);
+			gap: $section-spacing-large;
 		}
 
 		&__details {

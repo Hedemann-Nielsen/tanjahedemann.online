@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import "./VideoModal.scss";
 
 function VideoModal({ item, content, onClose }) {
   const dialogRef = useRef(null);
