@@ -1,66 +1,85 @@
 import { HashLink } from "react-router-hash-link";
+import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../../i18n/LanguageContext";
 import "./Footer.scss";
 
-function Footer() {
+function Footer({ onOpenLegal, onOpenCookieSettings }) {
 	const { translations } = useLanguage();
 	const { footer } = translations;
+	
+	const location = useLocation();
 	const currentYear = new Date().getFullYear();
+	const isContactPage = location.pathname === "/contact";
 
 	return (
-		<footer className="footer">
-			<div className="container">
-				<div className="footer__grid">
-					<div className="footer__brand">
-						<HashLink className="footer__logo" smooth to="/#top">
-							Tanja Hedemann
-						</HashLink>
-
-						<p>{footer.tagline}</p>
-						<p>{footer.location}</p>
-					</div>
-
-					<div className="footer__column">
-						<h2 className="footer__heading">{footer.navigationTitle}</h2>
-
-						<nav className="footer__nav" aria-label={footer.navigationTitle}>
-							<HashLink smooth to="/portfolio">
-								{footer.navigation.work}
+		<>
+			<footer className="footer">
+				<div className="container">
+					<div className="footer__grid">
+						<div className="footer__brand">
+							<HashLink className="footer__logo" smooth to="/#top">
+								Tanja Hedemann
 							</HashLink>
 
-							<HashLink smooth to="/#about">
-								{footer.navigation.about}
-							</HashLink>
+							<p>{footer.tagline}</p>
+							<p>{footer.location}</p>
+						</div>
 
-							<HashLink smooth to="/#services">
-								{footer.navigation.services}
-							</HashLink>
+						<div className="footer__column">
+							<h2 className="footer__heading">{footer.navigationTitle}</h2>
 
-							<HashLink smooth to="/#contact">
-								{footer.navigation.contact}
-							</HashLink>
-						</nav>
-					</div>
+							<nav className="footer__nav" aria-label={footer.navigationTitle}>
+								<HashLink smooth to="/#work">
+									{footer.navigation.work}
+								</HashLink>
 
-					<div className="footer__column">
-						<h2 className="footer__heading">{footer.legalTitle}</h2>
+								<HashLink smooth to="/#about">
+									{footer.navigation.about}
+								</HashLink>
 
-						<nav className="footer__nav" aria-label={footer.navigationTitle}>
-							<HashLink smooth to="/portfolio">
-								{footer.legal.privacy}
-							</HashLink>
+								<HashLink smooth to="/#services">
+									{footer.navigation.services}
+								</HashLink>
 
-							<HashLink smooth to="/#services">
-								{footer.legal.cookie}
-							</HashLink>
-						</nav>
-					</div>
+								<Link
+									className={isContactPage ? "footer__link--active" : ""}
+									to="/contact">
+									{footer.navigation.contact}
+								</Link>
+							</nav>
+						</div>
 
-					<div className="footer__column">
-						<h2 className="footer__heading">{footer.connectTitle}</h2>
+						<div className="footer__column">
+							<h2 className="footer__heading">{footer.legalTitle}</h2>
 
-						<div className="footer__links">
-							<div className="footer__link-group">
+							<div className="footer__nav">
+								<button
+									className="footer__legal-button"
+									type="button"
+									onClick={() => onOpenLegal("privacy")}>
+									{footer.legal.privacy}
+								</button>
+
+								<button
+									className="footer__legal-button"
+									type="button"
+									onClick={() => onOpenLegal("cookies")}>
+									{footer.legal.cookie}
+								</button>
+
+								<button
+									className="footer__legal-button"
+									type="button"
+									onClick={onOpenCookieSettings}>
+									{footer.legal.settings}
+								</button>
+							</div>
+						</div>
+
+						<div className="footer__column">
+							<h2 className="footer__heading">{footer.connectTitle}</h2>
+
+							<div className="footer__links">
 								<div className="footer__link-group">
 									<p className="footer__link-label">{footer.connect.knitlig}</p>
 
@@ -80,32 +99,39 @@ function Footer() {
 										</a>
 									</div>
 								</div>
-								<p className="footer__link-label">{footer.connect.private}</p>
 
-								<div className="footer__link-row">
-									<a
-										href="https://www.instagram.com/misstanjanielsen"
-										target="_blank"
-										rel="noreferrer">
-										Instagram
-									</a>
+								<div className="footer__link-group">
+									<p className="footer__link-label">{footer.connect.private}</p>
+
+									<div className="footer__link-row">
+										<a
+											href="https://www.instagram.com/misstanjanielsen"
+											target="_blank"
+											rel="noreferrer">
+											Instagram
+										</a>
+									</div>
 								</div>
-							</div>
 
-							<a className="footer__email" href="mailto:tanja-nielsen@live.dk">
-								Email
-							</a>
+								<a
+									className="footer__email"
+									href="mailto:tanja-nielsen@live.dk">
+									Email
+								</a>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div className="footer__bottom">
-					<p>
-						© {currentYear} Tanja Hedemann. {footer.copyright}
-					</p>
+					<div className="footer__bottom">
+						<p>
+							© {currentYear} Tanja Hedemann. {footer.copyright}
+						</p>
+					</div>
 				</div>
-			</div>
-		</footer>
+			</footer>
+
+
+		</>
 	);
 }
 

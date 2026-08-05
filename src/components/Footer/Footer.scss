@@ -61,7 +61,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0 1.25rem;
-    margin-top: -10px;
+		margin-top: -10px;
 
 		a {
 			width: fit-content;
@@ -90,6 +90,25 @@
 			text-align: center;
 		}
 	}
+
+	&__legal-button {
+		width: fit-content;
+		padding: 0;
+
+		background-color: transparent;
+		border: 0;
+
+		color: $color-text-muted;
+		font-family: inherit;
+		font-size: 0.9rem;
+		text-align: left;
+
+		transition: color $transition-default;
+	}
+
+	&__link--active {
+		color: $color-primary-dark;
+	}
 }
 
 @media (min-width: $breakpoint-tablet) {
@@ -106,6 +125,9 @@
 			a:hover {
 				color: $color-primary-dark;
 			}
+		}
+		&__legal-button:hover {
+			color: $color-primary-dark;
 		}
 	}
 }

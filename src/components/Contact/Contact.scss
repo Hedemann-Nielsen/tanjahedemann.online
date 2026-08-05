@@ -1,129 +1,221 @@
 @use "../../styles/abstracts/variables" as *;
 
 .contact {
-  background-color: $color-text;
-  color: $color-surface;
+	min-height: 100vh;
+	padding-block: 9rem clamp(4rem, 8vw, 7rem);
 
-  &__inner {
-    display: grid;
-    gap: 3rem;
-  }
+	background-color: $color-surface;
 
-  &__content {
-    max-width: 38rem;
-  }
+	&__intro {
+		display: grid;
+		gap: 2rem;
 
-  &__eyebrow {
-    margin-bottom: 0.75rem;
+		padding-bottom: clamp(3rem, 6vw, 5rem);
 
-    color: $color-primary-light;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
+		border-bottom: 1px solid $color-border;
+	}
 
-  &__title {
-    margin-bottom: 1.25rem;
+	&__eyebrow {
+		margin-bottom: 0.75rem;
 
-    color: $color-surface;
-  }
+		color: $color-primary;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
 
-  &__description {
-    color: rgba($color-surface, 0.72);
-  }
+	&__title {
+		max-width: 52rem;
 
-  &__form {
-    display: grid;
-    gap: 1.25rem;
-  }
+		font-size: clamp(3rem, 12vw, 6rem);
+		font-weight: 500;
+		letter-spacing: -0.04em;
+		line-height: 0.98;
+	}
 
-  &__field {
-    display: grid;
-    gap: 0.5rem;
+	&__description {
+		max-width: 38rem;
 
-    label {
-      color: rgba($color-surface, 0.8);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
+		color: $color-text-muted;
+		font-size: 0.95rem;
+		line-height: 1.75;
+	}
 
-    input,
-    textarea {
-      width: 100%;
-      padding: 0.9rem 0;
+	&__body {
+		display: grid;
+		gap: 3.5rem;
 
-      background: transparent;
-      border: 0;
-      border-bottom: 1px solid rgba($color-surface, 0.3);
-      border-radius: 0;
-      outline: none;
+		padding-top: clamp(3rem, 6vw, 5rem);
+	}
 
-      color: $color-surface;
+	&__details {
+		display: grid;
+		align-content: start;
+		gap: 2rem;
+	}
 
-      transition: border-color $transition-default;
+	&__detail {
+		display: grid;
+		gap: 0.45rem;
 
-      &:focus {
-        border-color: $color-primary-light;
-      }
-    }
+		a,
+		p:not(.contact__detail-label) {
+			color: $color-text-muted;
+			font-size: 0.9rem;
+			line-height: 1.6;
+		}
+	}
 
-    textarea {
-      resize: vertical;
-    }
-  }
+	&__detail-label {
+		color: $color-text;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
 
-  &__submit {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
+	&__socials {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.5rem;
+	}
 
-    min-height: 3.25rem;
-    width: 100%;
-    padding-inline: 1.5rem;
+	&__form {
+		display: grid;
+		gap: 1.75rem;
+	}
 
-    background-color: $color-primary;
-    border-radius: $radius-small;
+	&__field {
+		display: grid;
+		gap: 0.65rem;
 
-    color: $color-surface;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+		label {
+			color: $color-text;
+			font-size: 0.72rem;
+			font-weight: 700;
+			letter-spacing: 0.07em;
+			text-transform: uppercase;
+		}
 
-    span {
-      transition: transform $transition-default;
-    }
-  }
+		input,
+		textarea {
+			width: 100%;
+			padding: 0.9rem 0;
+
+			background-color: transparent;
+			border: 0;
+			border-bottom: 1px solid $color-border;
+			border-radius: 0;
+			outline: none;
+
+			color: $color-text;
+			font: inherit;
+
+			transition: border-color $transition-default;
+
+			&:focus {
+				border-color: $color-primary-dark;
+			}
+		}
+
+		textarea {
+			min-height: 10rem;
+			resize: vertical;
+		}
+	}
+
+	&__submit {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+
+		width: fit-content;
+		min-height: 3.4rem;
+		padding-inline: 1.75rem;
+
+		background-color: $color-primary;
+		border: 1px solid $color-primary;
+
+		color: $color-surface;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+
+		transition:
+			background-color $transition-default,
+			border-color $transition-default,
+			transform $transition-default;
+
+		span {
+			transition: transform $transition-default;
+		}
+	}
 }
 
 @media (min-width: $breakpoint-tablet) {
-  .contact {
-    &__inner {
-      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-      align-items: start;
-      gap: 4rem;
-    }
+	.contact {
+		padding-top: 11rem;
 
-    &__form {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+		&__intro {
+			grid-template-columns:
+				minmax(0, 1fr)
+				minmax(18rem, 0.65fr);
 
-    &__field--full,
-    &__submit {
-      grid-column: 1 / -1;
-    }
+			align-items: end;
+			gap: 4rem;
+		}
 
-    &__submit {
-      width: fit-content;
-      justify-self: start;
-    }
+		&__description {
+			justify-self: end;
+		}
 
-    &__submit:hover span {
-      transform: translateX(0.3rem);
-    }
-  }
+		&__body {
+			grid-template-columns:
+				minmax(14rem, 0.55fr)
+				minmax(0, 1.45fr);
+
+			gap: clamp(4rem, 8vw, 8rem);
+		}
+
+		&__details {
+			padding-right: 2rem;
+
+			border-right: 1px solid $color-border;
+		}
+
+		&__form {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		&__field--full,
+		&__submit {
+			grid-column: 1 / -1;
+		}
+
+		&__submit {
+			justify-self: start;
+		}
+	}
+}
+
+@media (min-width: $breakpoint-desktop) {
+	.contact {
+		&__submit:hover {
+			background-color: $color-primary-dark;
+			border-color: $color-primary-dark;
+			transform: translateY(-0.15rem);
+
+			span {
+				transform: translateX(0.25rem);
+			}
+		}
+
+		&__detail a:hover,
+		&__socials a:hover {
+			color: $color-primary-dark;
+		}
+	}
 }

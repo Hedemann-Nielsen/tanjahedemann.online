@@ -44,8 +44,7 @@ function Hero() {
 
 						<HashLink
 							className="hero__button hero__button--secondary"
-							smooth
-							to="/#contact">
+							to="/contact">
 							{hero.secondaryButton}
 						</HashLink>
 					</div>

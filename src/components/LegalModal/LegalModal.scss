@@ -1,0 +1,171 @@
+@use "../../styles/abstracts/variables" as *;
+
+.legal-modal {
+	width: 100%;
+	max-width: none;
+	height: 100%;
+	max-height: none;
+	margin: 0;
+	padding: 0;
+
+	background-color: transparent;
+	border: 0;
+
+	overflow: hidden;
+
+	&::backdrop {
+		background-color: rgba(20, 18, 16, 0.65);
+		backdrop-filter: blur(0.3rem);
+	}
+
+	&__panel {
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		display: flex;
+		flex-direction: column;
+
+		width: min(100%, 46rem);
+		height: 100%;
+
+		background-color: $color-surface;
+		box-shadow: -1rem 0 3rem rgba(0, 0, 0, 0.15);
+
+		animation: legal-modal-slide-in 350ms ease forwards;
+	}
+
+	&__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 2rem;
+
+		padding: 2rem 1.5rem;
+
+		border-bottom: 1px solid $color-border;
+	}
+
+	&__eyebrow {
+		margin-bottom: 0.5rem;
+
+		color: $color-primary;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	&__title {
+		font-size: clamp(2rem, 8vw, 3.5rem);
+		font-weight: 500;
+		line-height: 1;
+	}
+
+	&__close {
+		flex: 0 0 auto;
+
+		display: grid;
+		place-items: center;
+
+		width: 2.75rem;
+		height: 2.75rem;
+		padding: 0;
+
+		background-color: transparent;
+		border: 1px solid $color-border;
+
+		color: $color-text;
+		font-size: 1.6rem;
+		line-height: 1;
+
+		transition:
+			background-color $transition-default,
+			border-color $transition-default,
+			color $transition-default;
+	}
+
+	&__body {
+		flex: 1;
+
+		padding: 2rem 1.5rem 4rem;
+
+		overflow-y: auto;
+	}
+
+	&__updated {
+		margin-bottom: 2.5rem;
+
+		color: $color-text-muted;
+		font-size: 0.78rem;
+	}
+
+	&__section {
+		max-width: 39rem;
+
+		& + & {
+			margin-top: 2.5rem;
+			padding-top: 2.5rem;
+
+			border-top: 1px solid $color-border;
+		}
+
+		h3 {
+			margin-bottom: 0.9rem;
+
+			font-family: $font-heading;
+			font-size: 1.45rem;
+			font-weight: 500;
+		}
+
+		p {
+			color: $color-text-muted;
+			font-size: 0.9rem;
+			line-height: 1.75;
+
+			& + p {
+				margin-top: 1rem;
+			}
+		}
+	}
+}
+
+body.legal-modal-open {
+	overflow: hidden;
+}
+
+@keyframes legal-modal-slide-in {
+	from {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@media (min-width: $breakpoint-tablet) {
+	.legal-modal {
+		&__header {
+			padding: 2.5rem 3rem;
+		}
+
+		&__body {
+			padding: 3rem 3rem 5rem;
+		}
+
+		&__close:hover {
+			background-color: $color-primary;
+			border-color: $color-primary;
+			color: $color-surface;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.legal-modal__panel {
+		animation: none;
+	}
+}

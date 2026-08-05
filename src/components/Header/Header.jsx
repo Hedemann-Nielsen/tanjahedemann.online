@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { HashLink } from "react-router-hash-link";
 import { useLanguage } from "../../i18n/LanguageContext";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.scss";
 
 function Header() {
@@ -14,7 +14,8 @@ function Header() {
 
 	const location = useLocation();
 	const isHome = location.pathname === "/";
-	
+	const isContactPage = location.pathname === "/contact";
+
 	function closeMenu() {
 		setIsMenuOpen(false);
 	}
@@ -150,15 +151,14 @@ function Header() {
 						{navigation.services}
 					</HashLink>
 
-					<HashLink
+					<Link
 						className={`header__link header__contact-link ${
-							activeSection === "contact" ? "header__link--active" : ""
+							isContactPage ? "header__link--active" : ""
 						}`}
-						smooth
-						to="/#contact"
+						to="/contact"
 						onClick={closeMenu}>
 						{navigation.contact}
-					</HashLink>
+					</Link>
 				</nav>
 			</div>
 		</header>

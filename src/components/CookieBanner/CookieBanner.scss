@@ -1,0 +1,330 @@
+@use "../../styles/abstracts/variables" as *;
+
+.cookie-banner {
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+	left: 1rem;
+	z-index: 200;
+
+	max-height: calc(100dvh - 2rem);
+
+	background-color: $color-surface;
+	border: 1px solid $color-border;
+	box-shadow: 0 1.5rem 4rem rgba(20, 18, 16, 0.18);
+
+	overflow-y: auto;
+
+	animation: cookie-banner-in 350ms ease forwards;
+
+	&__inner {
+		padding: 1.5rem;
+	}
+
+	&__top {
+		display: grid;
+		gap: 1.75rem;
+	}
+
+	&__content {
+		text-align: center;
+	}
+
+	&__eyebrow {
+		margin-bottom: 0.5rem;
+
+		color: $color-primary;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	&__title {
+		margin-bottom: 0.75rem;
+
+		font-family: $font-heading;
+		font-size: clamp(1.8rem, 7vw, 2.75rem);
+		font-weight: 500;
+		line-height: 1;
+	}
+
+	&__description {
+		max-width: 46rem;
+		margin-inline: auto;
+
+		color: $color-text-muted;
+		font-size: 0.88rem;
+		line-height: 1.65;
+	}
+
+	&__links {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem 1rem;
+
+		margin-top: 0.9rem;
+	}
+
+	&__text-link {
+		width: fit-content;
+		padding: 0;
+
+		background-color: transparent;
+		border: 0;
+		border-bottom: 1px solid currentColor;
+
+		color: $color-primary-dark;
+		font-size: 0.78rem;
+		font-weight: 700;
+
+		transition: color $transition-default;
+	}
+
+	&__link-divider {
+		color: $color-primary;
+	}
+
+	&__actions {
+		display: grid;
+		gap: 0.65rem;
+	}
+
+	&__button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		min-height: 3.25rem;
+		padding-inline: 1.5rem;
+
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+
+		transition:
+			background-color $transition-default,
+			border-color $transition-default,
+			color $transition-default;
+
+		&--primary {
+			background-color: $color-primary;
+			border: 1px solid $color-primary;
+
+			color: $color-surface;
+		}
+
+		&--secondary {
+			background-color: transparent;
+			border: 1px solid $color-primary;
+
+			color: $color-primary-dark;
+		}
+	}
+
+	&__settings {
+		display: grid;
+
+		margin-top: 1.75rem;
+
+		border-top: 1px solid $color-border;
+	}
+
+	&__category {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		align-items: center;
+		gap: 1.5rem;
+
+		padding-block: 1.25rem;
+
+		border-bottom: 1px solid $color-border;
+
+		h3 {
+			margin-bottom: 0.25rem;
+
+			font-family: $font-body;
+			font-size: 0.82rem;
+			font-weight: 700;
+		}
+
+		p {
+			max-width: 48rem;
+
+			color: $color-text-muted;
+			font-size: 0.78rem;
+			line-height: 1.55;
+		}
+	}
+
+	&__required {
+		color: $color-text-muted;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	&__toggle {
+		position: relative;
+
+		display: block;
+
+		width: 2.8rem;
+		height: 1.5rem;
+
+		cursor: pointer;
+
+		input {
+			position: absolute;
+
+			width: 1px;
+			height: 1px;
+
+			opacity: 0;
+		}
+
+		> span:first-of-type {
+			position: absolute;
+			inset: 0;
+
+			background-color: $color-border;
+			border: 1px solid $color-border;
+			border-radius: 999px;
+
+			transition:
+				background-color $transition-default,
+				border-color $transition-default;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 0.17rem;
+				left: 0.17rem;
+
+				width: 1rem;
+				height: 1rem;
+
+				background-color: $color-surface;
+				border-radius: 50%;
+				box-shadow: $shadow-small;
+
+				transition: transform $transition-default;
+			}
+		}
+
+		input:checked + span {
+			background-color: $color-primary;
+			border-color: $color-primary;
+
+			&::after {
+				transform: translateX(1.25rem);
+			}
+		}
+
+		input:focus-visible + span {
+			outline: 2px solid $color-primary-dark;
+			outline-offset: 0.2rem;
+		}
+	}
+
+	&__save {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.65rem;
+
+		width: fit-content;
+		min-height: 3.1rem;
+		margin-top: 1.25rem;
+		padding-inline: 1.4rem;
+
+		background-color: $color-text;
+		border: 1px solid $color-text;
+
+		color: $color-surface;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+
+		span {
+			transition: transform $transition-default;
+		}
+	}
+}
+
+@keyframes cookie-banner-in {
+	from {
+		opacity: 0;
+		transform: translateY(1.5rem);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (min-width: $breakpoint-tablet) {
+	.cookie-banner {
+		right: 2rem;
+		bottom: 2rem;
+		left: 2rem;
+
+		width: auto;
+
+		&__inner {
+			padding: 1.75rem 2rem;
+		}
+
+		&__top {
+			grid-template-columns: minmax(0, 1fr) auto;
+			align-items: center;
+			gap: clamp(2rem, 5vw, 5rem);
+		}
+
+		&__content {
+			padding-left: clamp(0rem, 4vw, 10rem);
+		}
+
+		&__actions {
+			grid-template-columns: repeat(2, minmax(10rem, auto));
+		}
+	}
+}
+
+@media (min-width: $breakpoint-desktop) {
+	.cookie-banner {
+		&__inner {
+			padding: 1.7rem clamp(2rem, 4vw, 4rem);
+		}
+
+		&__button--primary:hover {
+			background-color: $color-primary-dark;
+			border-color: $color-primary-dark;
+		}
+
+		&__button--secondary:hover {
+			background-color: $color-primary;
+			color: $color-surface;
+		}
+
+		&__text-link:hover {
+			color: $color-primary;
+		}
+
+		&__save:hover span {
+			transform: translateX(0.25rem);
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cookie-banner {
+		animation: none;
+	}
+}
