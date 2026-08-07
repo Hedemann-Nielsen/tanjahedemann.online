@@ -150,13 +150,31 @@ export const en = {
 			emailPlaceholder: "Email address",
 
 			company: "Company",
-			companyPlaceholder: "Company (optional)",
+			companyPlaceholder: "Company name (optional)",
 
 			message: "Tell me about your project",
 			messagePlaceholder:
 				"Tell me a little about your project, timeline and the content you need.",
 
 			submit: "Send enquiry",
+			sending: "Sending...",
+
+			successTitle: "Message sent",
+			success:
+				"Thank you for reaching out. I'll get back to you as soon as possible.",
+		},
+
+		validation: {
+			nameRequired: "Please enter your name.",
+			nameShort: "Your name must contain at least 2 characters.",
+
+			emailRequired: "Please enter your email address.",
+			emailInvalid: "Please enter a valid email address.",
+
+			companyLong: "Company name is too long.",
+
+			messageRequired: "Please enter a message.",
+			messageShort: "Your message must contain at least 20 characters.",
 		},
 	},
 

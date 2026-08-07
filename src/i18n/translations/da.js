@@ -150,13 +150,29 @@ export const da = {
 			emailPlaceholder: "Din e-mailadresse",
 
 			company: "Virksomhed",
-			companyPlaceholder: "Virksomhed (valgfrit)",
+			companyPlaceholder: "Virksomheds navn (valgfrit)",
 
 			message: "Fortæl mig om dit projekt",
 			messagePlaceholder:
 				"Fortæl lidt om dit projekt, din tidsplan og det indhold, du har brug for.",
 
 			submit: "Send forespørgsel",
+			sending: "Sender...",
+
+			successTitle: "Beskeden er sendt",
+			success: "Tak for din henvendelse. Jeg vender tilbage hurtigst muligt.",
+		},
+		validation: {
+			nameRequired: "Indtast dit navn.",
+			nameShort: "Navnet skal være mindst 2 tegn.",
+
+			emailRequired: "Indtast din e-mail.",
+			emailInvalid: "Indtast en gyldig e-mailadresse.",
+
+			companyLong: "Virksomhedsnavnet er for langt.",
+
+			messageRequired: "Skriv venligst en besked.",
+			messageShort: "Beskeden skal være mindst 20 tegn.",
 		},
 	},
 
@@ -282,7 +298,7 @@ export const da = {
 		acceptAll: "Accepter alle",
 		rejectOptional: "Afvis valgfrie",
 		settings: "Cookieindstillinger",
-		hideSettings: "Hide settings",
+		hideSettings: "Skjul indstillinger",
 		savePreferences: "Gem indstillinger",
 		alwaysActive: "Altid aktiv",
 
